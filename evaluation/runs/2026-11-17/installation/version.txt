@@ -1,0 +1,4 @@
+Command: npx --cache /private/tmp/study-skills-npm-cache --yes skills --version
+Exit: 0
+1.9.0
+Initial sandbox attempt failed with npm ENOTFOUND; retry ran with user-approved network access.
