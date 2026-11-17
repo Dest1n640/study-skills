@@ -1,0 +1,1 @@
+Four skill frontmatters and explicit-only policy YAML files parsed. Local README/report links resolved. Final hint skill read observed in both native read-only runs; source and tests unchanged. Full resume flow not tested.
