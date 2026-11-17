@@ -1,0 +1,5 @@
+[1] COMMAND:
+cat /Users/dest1n/Projects/study-skills/evaluation/runs/2026-11-17/guide-part--study-guide-normal/prompt-3.md
+RAW OUTPUT:
+Теперь проверь моё понимание работы parse_numbers: задай один вопрос про поведение на пустом элементе, пока не сообщай ответ.
+EXIT STATUS: 0
