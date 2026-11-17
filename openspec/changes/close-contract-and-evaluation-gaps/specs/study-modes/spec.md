@@ -49,3 +49,14 @@ Guide modes SHALL explain along the way and SHALL use quizzes, predictions, teac
 - **WHEN** a concrete implementation request lacks a detail needed for correctness
 - **THEN** the tutor may ask for that detail without requiring the learner to pass a conceptual quiz
 
+
+### Requirement: Preserve learner authorship in hint
+Hint modes SHALL leave assignment source code, submitted implementation, and tests to the learner and SHALL give guidance instead of patches or completed target-code fragments. An implementation request within an explicitly selected hint mode SHALL be interpreted as a request for guidance unless the learner explicitly selects guide or ends study mode. Other coding workflows SHALL preserve that authorship boundary.
+
+#### Scenario: An automatic fix is requested
+- **WHEN** the learner asks the hint tutor to edit or complete target code
+- **THEN** the tutor offers useful guidance in ordinary teaching language without editing files, delegating the fix, or supplying replacement target code
+
+#### Scenario: Another coding workflow recommends implementing a fix
+- **WHEN** a debugging or refactoring workflow is used while hint remains selected
+- **THEN** the tutor completes investigation and verification and explains the next learner action without applying the target fix
