@@ -1,0 +1,99 @@
+Commands executed, in order. RAW OUTPUT contains the unchanged combined stdout/stderr returned by exec_command. Recorder file writes use apply_patch and are not shell commands.
+Learner working directory: /var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-guide-part-ej0a33dc
+
+COMMAND 1
+cat /Users/dest1n/Projects/study-skills/evaluation/runs/2026-11-17/guide-part--study-guide-fast/prompt-2.md
+EXIT STATUS: 0
+RAW OUTPUT:
+Теперь реализуй только summarize(values): вернуть словарь count с числом элементов и sum с их суммой; для пустого списка оба значения нулевые. Объясни решение и проверь полный набор тестов.
+END RAW OUTPUT
+
+COMMAND 2
+cat exercise.py
+EXIT STATUS: 0
+RAW OUTPUT:
+def parse_numbers(text):
+    return [int(item) for item in text.split(",")]
+
+
+def summarize(values):
+    raise NotImplementedError
+
+
+def format_title(name):
+    return f"Report: {name}"
+
+END RAW OUTPUT
+
+COMMAND 3
+cat test_exercise.py
+EXIT STATUS: 0
+RAW OUTPUT:
+import unittest
+from exercise import format_title, parse_numbers, summarize
+
+
+class ParseTests(unittest.TestCase):
+    def test_integers_and_spaces(self):
+        self.assertEqual(parse_numbers(" 1, -2, 0 "), [1, -2, 0])
+
+    def test_empty_items(self):
+        for text in ["", "1,,2", "1,"]:
+            with self.subTest(text=text), self.assertRaises(ValueError):
+                parse_numbers(text)
+
+    def test_non_integer(self):
+        with self.assertRaises(ValueError):
+            parse_numbers("1,2.5")
+
+
+class SummaryTests(unittest.TestCase):
+    def test_values(self):
+        self.assertEqual(summarize([1, -2, 4]), {"count": 3, "sum": 3})
+
+    def test_empty(self):
+        self.assertEqual(summarize([]), {"count": 0, "sum": 0})
+
+
+class TitleTests(unittest.TestCase):
+    def test_title(self):
+        self.assertEqual(format_title("Expenses"), "Report: Expenses")
+
+
+if __name__ == "__main__":
+    unittest.main()
+
+END RAW OUTPUT
+
+COMMAND 4
+python3 - <<'PY'
+from pathlib import Path
+path = Path('exercise.py')
+text = path.read_text()
+old = 'def summarize(values):\n    raise NotImplementedError'
+new = 'def summarize(values):\n    return {"count": len(values), "sum": sum(values)}'
+assert old in text
+path.write_text(text.replace(old, new, 1))
+print('Updated summarize in exercise.py')
+PY
+EXIT STATUS: 0
+RAW OUTPUT:
+Updated summarize in exercise.py
+END RAW OUTPUT
+
+COMMAND 5
+python3 -m unittest -v
+EXIT STATUS: 0
+RAW OUTPUT:
+test_empty_items (test_exercise.ParseTests) ... ok
+test_integers_and_spaces (test_exercise.ParseTests) ... ok
+test_non_integer (test_exercise.ParseTests) ... ok
+test_empty (test_exercise.SummaryTests) ... ok
+test_values (test_exercise.SummaryTests) ... ok
+test_title (test_exercise.TitleTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.000s
+
+OK
+END RAW OUTPUT
