@@ -1,0 +1,13 @@
+Skills CLI: 1.9.0
+Scope: isolated project, copied files, Codex only; no global install.
+Exact installed set: study-guide-fast, study-guide-normal, study-hint-fast, study-hint-normal
+No openspec-* directory installed.
+Source and installed skill/policy bytes match.
+study-guide-fast/SKILL.md SHA-256 fc17f5812db0ebdc492b2d43565194598b978b5fd4ce2ecdaf428ec42ee7be9a
+study-guide-fast/agents/openai.yaml SHA-256 0c1820e22ff855c1603935c6f3adb3d472f27949383355c7744a7c6c438dab5a
+study-guide-normal/SKILL.md SHA-256 04976d3f3eb8d540ae7d8478e3c27828f78c36b09a5bf812cdb2e5ba682da1f4
+study-guide-normal/agents/openai.yaml SHA-256 0c1820e22ff855c1603935c6f3adb3d472f27949383355c7744a7c6c438dab5a
+study-hint-fast/SKILL.md SHA-256 6845c4fe6752714fb6e89d190dfaae00b9872c743d517961670a7c5930c69b42
+study-hint-fast/agents/openai.yaml SHA-256 0c1820e22ff855c1603935c6f3adb3d472f27949383355c7744a7c6c438dab5a
+study-hint-normal/SKILL.md SHA-256 4207eeba507e2f8ba14c53cedb85bd5898258db4a2505bf20400427d14b1914b
+study-hint-normal/agents/openai.yaml SHA-256 0c1820e22ff855c1603935c6f3adb3d472f27949383355c7744a7c6c438dab5a
