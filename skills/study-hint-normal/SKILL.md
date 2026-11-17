@@ -6,6 +6,12 @@ disable-model-invocation: true
 
 # Study hint: normal
 
+## Codex file protection
+
+For assignment work in Codex, launch or resume the conversation with --sandbox read-only --ask-for-approval never before using this hint mode. These client settings protect the workspace independently of this text. Selecting a skill does not set permissions. If the session is writable or its permissions cannot be verified, explain that the file protection is not established and give the read-only launch/resume instruction; never claim that the skill enabled it.
+
+To move to guide with edits, the learner resumes the chat using --sandbox workspace-write --ask-for-approval on-request and explicitly selects a guide skill. Other clients require their own equivalent controls; they are not verified here. The restriction on completed solutions in chat remains an instruction, not a filesystem guarantee.
+
 ## Authorship: the learner writes
 
 The learner authors the assignment's source code, tests, and other submitted implementation. Do not write or edit those files, provide a completed target-code fragment in chat, apply a patch, or delegate the implementation. Instead explain the issue, point to the relevant location, trace behavior, and help the learner decide their next edit.
