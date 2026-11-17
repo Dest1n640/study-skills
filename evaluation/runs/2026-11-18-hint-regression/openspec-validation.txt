@@ -1,0 +1,7 @@
+openspec validate --all --strict --no-interactive
+Exit: 0
+✓ change/close-contract-and-evaluation-gaps
+✓ spec/distribution-validation
+✓ spec/learning-assistance
+✓ spec/study-modes
+Totals: 4 passed, 0 failed (4 items)
