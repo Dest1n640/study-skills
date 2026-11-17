@@ -43,3 +43,7 @@ Claude Code, publication, remote installation, and educational effectiveness rem
 [Controlled native checks](runs/2026-11-18-hint-regression/README.md) tested an explicit hint-contract clarification. The original control preserved the source; one of two revised normal runs edited it, the other preserved it. Revised fast preserved it. The candidate wording was withdrawn from the product because improvement was not demonstrated. The cause of the intermittent violation remains unconfirmed.
 
 A separate read-only runtime probe preserved the fixture and gave guidance. It is not automatically enabled by SKILL.md and does not enforce chat-output boundaries. A change to the product launch workflow requires a user decision; task 4.1 remains open.
+
+## Approved permission-bound hint workflow
+
+The user approved client read-only plus never approvals for hint; guide editing requires resuming with workspace-write/on-request and explicitly selecting guide. Final [normal](runs/2026-11-18-hint-regression/final-study-hint-normal/review.md) and [fast](runs/2026-11-18-hint-regression/final-study-hint-fast/review.md) checks loaded the final skills and preserved source/tests. This resolves the scoped file-protection task through client permissions, not by claiming the failed prompt revision repaired model behavior. The replies still quote internal instructions; the full interactive resume sequence and chat-output enforcement are not verified. Historical failures are retained.
