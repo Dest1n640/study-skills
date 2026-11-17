@@ -1,0 +1,14 @@
+[
+  "codex",
+  "exec",
+  "--ephemeral",
+  "--skip-git-repo-check",
+  "--json",
+  "--sandbox",
+  "workspace-write",
+  "--cd",
+  "/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-skills-install-4aag7ita",
+  "--output-last-message",
+  "/Users/dest1n/Projects/study-skills/evaluation/runs/2026-11-17/native-codex/study-guide-normal-response.md",
+  "$study-guide-normal В папке probe-study-guide-normal реализуй только parse_numbers: целые числа через запятую с пробелами, пустой элемент и нецелое значение дают ValueError. summarize не реализуй. Объясни выбор и проверь нужные тесты; понимание не проверяй."
+]
