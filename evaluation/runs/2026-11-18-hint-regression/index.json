@@ -1,0 +1,30 @@
+[
+  {
+    "label": "control-normal",
+    "mode": "study-hint-normal",
+    "workspace": "/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-hint-regression-x4q18cn0",
+    "run": "/Users/dest1n/Projects/study-skills/evaluation/runs/2026-11-18-hint-regression/control-normal",
+    "fixture": "probe-study-hint-normal"
+  },
+  {
+    "label": "revised-normal-1",
+    "mode": "study-hint-normal",
+    "workspace": "/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-hint-regression-1z7_t1_6",
+    "run": "/Users/dest1n/Projects/study-skills/evaluation/runs/2026-11-18-hint-regression/revised-normal-1",
+    "fixture": "probe-study-hint-normal"
+  },
+  {
+    "label": "revised-normal-2",
+    "mode": "study-hint-normal",
+    "workspace": "/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-hint-regression-da7cq42u",
+    "run": "/Users/dest1n/Projects/study-skills/evaluation/runs/2026-11-18-hint-regression/revised-normal-2",
+    "fixture": "probe-study-hint-normal"
+  },
+  {
+    "label": "revised-fast",
+    "mode": "study-hint-fast",
+    "workspace": "/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-hint-regression-3qk3o6tx",
+    "run": "/Users/dest1n/Projects/study-skills/evaluation/runs/2026-11-18-hint-regression/revised-fast",
+    "fixture": "probe-study-hint-fast"
+  }
+]
