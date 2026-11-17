@@ -1,0 +1,22 @@
+Relevant CLI stdout, with terminal control sequences removed from the recorded tool result:
+
+codex  Agent detected — installing non-interactively
+Source: /Users/dest1n/Projects/study-skills
+Local path validated
+Found 10 skills
+Selected 4 skills: study-guide-fast, study-guide-normal, study-hint-fast, study-hint-normal
+
+Installation Summary:
+./.agents/skills/study-guide-fast     universal: Codex
+./.agents/skills/study-guide-normal   universal: Codex
+./.agents/skills/study-hint-fast      universal: Codex
+./.agents/skills/study-hint-normal    universal: Codex
+
+Installation complete
+Installed 4 skills:
+study-guide-fast (copied) -> ./.agents/skills/study-guide-fast
+study-guide-normal (copied) -> ./.agents/skills/study-guide-normal
+study-hint-fast (copied) -> ./.agents/skills/study-hint-fast
+study-hint-normal (copied) -> ./.agents/skills/study-hint-normal
+
+Done! Review skills before use; they run with full agent permissions.
