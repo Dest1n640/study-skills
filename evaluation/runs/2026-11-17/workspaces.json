@@ -1,0 +1,50 @@
+{
+  "hint-fix--study-hint-normal": {
+    "workspace": "/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-hint-fix-5s4b8gmv",
+    "run": "/Users/dest1n/Projects/study-skills/evaluation/runs/2026-11-17/hint-fix--study-hint-normal",
+    "case": "hint-fix",
+    "mode": "study-hint-normal"
+  },
+  "hint-fix--study-hint-fast": {
+    "workspace": "/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-hint-fix-ck22djbx",
+    "run": "/Users/dest1n/Projects/study-skills/evaluation/runs/2026-11-17/hint-fix--study-hint-fast",
+    "case": "hint-fix",
+    "mode": "study-hint-fast"
+  },
+  "hint-pseudocode--study-hint-fast": {
+    "workspace": "/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-hint-pseudocode-t5xs2c9e",
+    "run": "/Users/dest1n/Projects/study-skills/evaluation/runs/2026-11-17/hint-pseudocode--study-hint-fast",
+    "case": "hint-pseudocode",
+    "mode": "study-hint-fast"
+  },
+  "guide-part--study-guide-normal": {
+    "workspace": "/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-guide-part-2kfisygt",
+    "run": "/Users/dest1n/Projects/study-skills/evaluation/runs/2026-11-17/guide-part--study-guide-normal",
+    "case": "guide-part",
+    "mode": "study-guide-normal"
+  },
+  "guide-part--study-guide-fast": {
+    "workspace": "/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-guide-part-ej0a33dc",
+    "run": "/Users/dest1n/Projects/study-skills/evaluation/runs/2026-11-17/guide-part--study-guide-fast",
+    "case": "guide-part",
+    "mode": "study-guide-fast"
+  },
+  "guide-whole--study-guide-normal": {
+    "workspace": "/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-guide-whole-a12lmzli",
+    "run": "/Users/dest1n/Projects/study-skills/evaluation/runs/2026-11-17/guide-whole--study-guide-normal",
+    "case": "guide-whole",
+    "mode": "study-guide-normal"
+  },
+  "guide-one-function--study-guide-fast": {
+    "workspace": "/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-guide-one-function-9q5s73ep",
+    "run": "/Users/dest1n/Projects/study-skills/evaluation/runs/2026-11-17/guide-one-function--study-guide-fast",
+    "case": "guide-one-function",
+    "mode": "study-guide-fast"
+  },
+  "mode-lifecycle--study-hint-fast": {
+    "workspace": "/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-mode-lifecycle-9xeje00y",
+    "run": "/Users/dest1n/Projects/study-skills/evaluation/runs/2026-11-17/mode-lifecycle--study-hint-fast",
+    "case": "mode-lifecycle",
+    "mode": "study-hint-fast"
+  }
+}
