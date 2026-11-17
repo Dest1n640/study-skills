@@ -1,0 +1,3 @@
+Working directory: /var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-skills-install-4aag7ita
+Command: npx --cache /private/tmp/study-skills-npm-cache --yes skills add /Users/dest1n/Projects/study-skills --agent codex --skill study-hint-normal study-hint-fast study-guide-normal study-guide-fast --copy --yes
+Exit: 0
