@@ -55,3 +55,25 @@ npx skills add . --agent codex --skill study-hint-normal study-hint-fast study-g
 
 Никаких обязательных квизов, профилей, XP, журналов прогресса или системы повторения в первой версии нет. Лицензия публичного выпуска пока не выбрана. Источники идей и подробности совместимости перечислены в [English README](README.md).
 
+
+## Защищённый hint в Codex
+
+Для работы с файлами задания запусти Codex с запретом записи, затем явно выбери hint:
+
+```sh
+codex --cd /path/to/project --sandbox read-only --ask-for-approval never
+```
+
+```text
+$study-hint-normal
+```
+
+Эти настройки подходят обоим hint-режимам. Сам SKILL.md права клиента не переключает. Без ограничения клиента запрет записи остаётся инструкцией: в проверках агент её нарушал. Read-only не ограничивает готовый код в сообщениях.
+
+Чтобы сохранить чат и перейти в guide, выйди через `/quit`, затем возобнови эту сессию по её ID (замени SESSION_ID и путь проекта):
+
+```sh
+codex resume SESSION_ID --cd /path/to/project --sandbox workspace-write --ask-for-approval on-request
+```
+
+После запуска явно выбери `$study-guide-normal` или `$study-guide-fast`. Для возврата к защищённому hint снова возобнови тот же ID с `--sandbox read-only --ask-for-approval never`, затем выбери hint. Простая смена скилла не меняет разрешения. Поддержка флагов проверена локально; полный интерактивный переход через resume пока не проверялся.
