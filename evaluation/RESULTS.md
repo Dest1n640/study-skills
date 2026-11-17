@@ -33,7 +33,7 @@ Eight supplied-file Codex smoke runs, including multi-turn cases, retain prompts
 
 [Local installation](runs/2026-11-17/installation/verification.txt) with Skills CLI 1.9.0 selected exactly the four product skills in an isolated project; the CLI found ten skills in the source. Remote GitHub installation is not tested.
 
-Native Codex revealed a material failure: two `study-hint-normal` invocations edited the learner's source; the first was observed reading its rule. See [response](runs/2026-11-17/native-codex/study-hint-normal-response.md) and [events](runs/2026-11-17/native-codex/study-hint-normal-events.jsonl). `study-hint-fast` preserved the file in its run, but quoted an internal rule despite the instruction to avoid it. The same change's [task list](../openspec/changes/close-contract-and-evaluation-gaps/tasks.md) tracks the unresolved correction and follow-up. Native switching and ending study mode remain unverified.
+Native Codex revealed a material failure: two `study-hint-normal` invocations edited the learner's source; the first was observed reading its rule. See [response](runs/2026-11-17/native-codex/study-hint-normal-response.md) and [events](runs/2026-11-17/native-codex/study-hint-normal-events.jsonl). `study-hint-fast` preserved the file in its run, but quoted an internal rule despite the instruction to avoid it. The same change's [task list](../openspec/changes/archive/2026-11-18-close-contract-and-evaluation-gaps/tasks.md) tracks the unresolved correction and follow-up. Native switching and ending study mode remain unverified.
 
 Claude Code, publication, remote installation, and educational effectiveness remain untested.
 
