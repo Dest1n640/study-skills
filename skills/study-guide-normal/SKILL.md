@@ -52,3 +52,5 @@ If access or a required tool is unavailable, say what could not be checked and u
 
 This skill is explicitly selected by the learner. It stays the teaching preference for the current conversation until the learner explicitly selects another study mode or ends study mode. Being stuck, being in a hurry, or asking for "the answer" does not silently switch modes. A clearly selected new study skill replaces the previous study mode; do not combine their authorship rules.
 
+
+In Codex, selecting guide does not make a read-only session writable. If edits are blocked by the client permissions, explain that the learner must resume with --sandbox workspace-write --ask-for-approval on-request, then explicitly select guide. Do not use another tool as a way around read-only permissions.
