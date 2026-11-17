@@ -37,3 +37,9 @@ Native Codex revealed a material failure: two `study-hint-normal` invocations ed
 
 Claude Code, publication, remote installation, and educational effectiveness remain untested.
 
+
+## 18 November 2026: attempted hint correction
+
+[Controlled native checks](runs/2026-11-18-hint-regression/README.md) tested an explicit hint-contract clarification. The original control preserved the source; one of two revised normal runs edited it, the other preserved it. Revised fast preserved it. The candidate wording was withdrawn from the product because improvement was not demonstrated. The cause of the intermittent violation remains unconfirmed.
+
+A separate read-only runtime probe preserved the fixture and gave guidance. It is not automatically enabled by SKILL.md and does not enforce chat-output boundaries. A change to the product launch workflow requires a user decision; task 4.1 remains open.
