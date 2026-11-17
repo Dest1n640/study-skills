@@ -46,3 +46,14 @@ Claims about installed Codex behavior SHALL identify whether the skill was invok
 - **WHEN** the installed study modes are present but the learner has not selected one
 - **THEN** the evaluator checks that their explicit-only settings are respected before claiming verified native manual selection
 
+
+### Requirement: Document permission-bound hint launch
+The product SHALL document Codex hint sessions using read-only workspace permissions with approval escalation disabled. It SHALL explain that selecting a skill does not change client permissions and that workspace-write guide use requires resuming with suitable permissions and explicitly selecting guide. Chat-output boundaries SHALL remain described as instructions rather than technical enforcement.
+
+#### Scenario: The learner launches protected hint
+- **WHEN** the learner follows the documented Codex hint launch
+- **THEN** the client uses read-only with approval policy never, and the hint skill does not claim it set these permissions
+
+#### Scenario: The learner moves from protected hint to guide
+- **WHEN** the learner wants guide to edit files
+- **THEN** documentation directs them to resume the same chat with workspace-write and on-request approvals and then explicitly select guide
