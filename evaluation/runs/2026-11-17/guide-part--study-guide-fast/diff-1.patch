@@ -1,0 +1,9 @@
+--- before/exercise.py
++++ after/exercise.py
+@@ -1,5 +1,5 @@
+ def parse_numbers(text):
+-    raise NotImplementedError
++    return [int(item) for item in text.split(",")]
+ 
+ 
+ def summarize(values):
