@@ -1,0 +1,49 @@
+Learner workspace: /var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-mode-lifecycle-9xeje00y
+
+$ rg --files
+test_exercise.py
+exercise.py
+Exit status: 0
+
+$ cat exercise.py test_exercise.py
+def count_positive(values):
+    return sum(1 for value in values if value >= 0)
+
+import unittest
+from exercise import count_positive
+
+
+class CountTests(unittest.TestCase):
+    def test_excludes_zero(self):
+        self.assertEqual(count_positive([-2, 0, 3]), 1)
+
+    def test_empty(self):
+        self.assertEqual(count_positive([]), 0)
+
+    def test_positive_values(self):
+        self.assertEqual(count_positive([1, 2, 3]), 3)
+
+
+if __name__ == "__main__":
+    unittest.main()
+
+Exit status: 0
+
+$ python3 -m unittest -v
+test_empty (test_exercise.CountTests) ... ok
+test_excludes_zero (test_exercise.CountTests) ... FAIL
+test_positive_values (test_exercise.CountTests) ... ok
+
+======================================================================
+FAIL: test_excludes_zero (test_exercise.CountTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-mode-lifecycle-9xeje00y/test_exercise.py", line 7, in test_excludes_zero
+    self.assertEqual(count_positive([-2, 0, 3]), 1)
+AssertionError: 2 != 1
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+FAILED (failures=1)
+Exit status: 1
