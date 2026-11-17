@@ -1,0 +1,42 @@
+schema: spec-driven
+context: 'Study skills is a Markdown Agent Skills project for learning programming at any experience level.
+
+  Four explicitly selected modes: study-hint-normal, study-hint-fast, study-guide-normal, study-guide-fast.
+
+  Hint leaves assignment implementation to the learner; detailed pseudocode is limited to the current
+  step.
+
+  Guide implements concrete requests with explanations. Separate requests may eventually cover all code.
+
+  A broad do-everything request first becomes a plan, not automatic execution of every part.
+
+  Guide has no compulsory checkpoints; understanding checks are requested by the learner.
+
+  Compare applicable methods, explain concepts and transfer, inspect real code, run available checks.
+
+  Skills are English; public descriptions are Russian/English; tutors speak the learner language.
+
+  Product skills are in skills/. OpenSpec helpers in .agents/skills/ are local development tooling.
+
+  Priority clients: Codex and Claude Code. Initial behavioral evaluation: Codex only.
+
+  Local Codex installation was verified; native hint-normal violated its boundary twice. Other clients and publication remain unverified.
+
+  Read openspec/README.md for navigation and openspec/DECISIONS.md for current decisions and pending work.
+
+  Baseline requirements are in openspec/specs/; research is historical evidence, not requirements.
+
+  Observed behavioral evidence and limitations are in evaluation/RESULTS.md.'
+rules:
+  proposal:
+  - Distinguish confirmed user decisions, proposed defaults, and unresolved questions.
+  - Describe the learner-visible effect and affected modes.
+  specs:
+  - Write requirements and WHEN/THEN scenarios in English.
+  - Describe observable behavior, not guaranteed learning outcomes or prompt enforcement.
+  - Preserve hint authorship boundaries and guide opt-in understanding checks.
+  design:
+  - Reuse self-contained SKILL.md files; justify extra dependencies and shared runtime files.
+  tasks:
+  - Separate metadata, Codex behavior, installation, and publication checks.
+  - Mark work complete only with evidence; initial testing does not require Claude Code.
