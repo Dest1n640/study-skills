@@ -1,0 +1,18 @@
+python3 -B -m unittest -v
+Exit: 1
+test_empty (test_exercise.CountTests.test_empty) ... ok
+test_excludes_zero (test_exercise.CountTests.test_excludes_zero) ... FAIL
+test_positive_values (test_exercise.CountTests.test_positive_values) ... ok
+
+======================================================================
+FAIL: test_excludes_zero (test_exercise.CountTests.test_excludes_zero)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-final-readonly-k4m_1d1g/exercise/test_exercise.py", line 7, in test_excludes_zero
+    self.assertEqual(count_positive([-2, 0, 3]), 1)
+AssertionError: 2 != 1
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+FAILED (failures=1)
