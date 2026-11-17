@@ -1,0 +1,2 @@
+Command argv: ["python3", "-B", "-c", "from exercise import count_positive, sum_positive; assert count_positive([-2,0,3]) == 1; assert sum_positive([-2,0,3,4]) == 7; assert sum_positive([]) == 0"]
+Exit: 0
