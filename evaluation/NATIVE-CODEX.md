@@ -16,3 +16,5 @@ For each check retain the exact request, relevant client events (including a ski
 
 If the available interface cannot exercise a check, leave it not run with a reason. Installation file checks can pass independently. Do not change global agent settings or claim Claude Code coverage.
 
+
+The invocation checklist above records the historical 17 November checks. The permission-bound hint workflow approved on 18 November is evaluated separately under runs/2026-11-18-hint-regression/. Full interactive resume/switching remains unverified.
