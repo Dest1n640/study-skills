@@ -1,0 +1,128 @@
+Fixture: positive
+Command: python3 -B -m unittest -v
+Exit: 1
+test_empty (test_exercise.CountTests.test_empty) ... ok
+test_excludes_zero (test_exercise.CountTests.test_excludes_zero) ... FAIL
+test_positive_values (test_exercise.CountTests.test_positive_values) ... ok
+
+======================================================================
+FAIL: test_excludes_zero (test_exercise.CountTests.test_excludes_zero)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-fixture-qcd3mzyt/test_exercise.py", line 7, in test_excludes_zero
+    self.assertEqual(count_positive([-2, 0, 3]), 1)
+AssertionError: 2 != 1
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+FAILED (failures=1)
+
+Fixture: report
+Command: python3 -B -m unittest test_exercise.TitleTests -v
+Exit: 0
+test_title (test_exercise.TitleTests.test_title) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+OK
+
+Fixture: report
+Command: python3 -B -m unittest test_exercise.ParseTests -v
+Exit: 1
+test_empty_items (test_exercise.ParseTests.test_empty_items) ... 
+  test_empty_items (test_exercise.ParseTests.test_empty_items) (text='') ... ERROR
+  test_empty_items (test_exercise.ParseTests.test_empty_items) (text='1,,2') ... ERROR
+  test_empty_items (test_exercise.ParseTests.test_empty_items) (text='1,') ... ERROR
+test_integers_and_spaces (test_exercise.ParseTests.test_integers_and_spaces) ... ERROR
+test_non_integer (test_exercise.ParseTests.test_non_integer) ... ERROR
+
+======================================================================
+ERROR: test_empty_items (test_exercise.ParseTests.test_empty_items) (text='')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-fixture-hi59gwpd/test_exercise.py", line 12, in test_empty_items
+    parse_numbers(text)
+  File "/private/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-fixture-hi59gwpd/exercise.py", line 2, in parse_numbers
+    raise NotImplementedError
+NotImplementedError
+
+======================================================================
+ERROR: test_empty_items (test_exercise.ParseTests.test_empty_items) (text='1,,2')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-fixture-hi59gwpd/test_exercise.py", line 12, in test_empty_items
+    parse_numbers(text)
+  File "/private/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-fixture-hi59gwpd/exercise.py", line 2, in parse_numbers
+    raise NotImplementedError
+NotImplementedError
+
+======================================================================
+ERROR: test_empty_items (test_exercise.ParseTests.test_empty_items) (text='1,')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-fixture-hi59gwpd/test_exercise.py", line 12, in test_empty_items
+    parse_numbers(text)
+  File "/private/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-fixture-hi59gwpd/exercise.py", line 2, in parse_numbers
+    raise NotImplementedError
+NotImplementedError
+
+======================================================================
+ERROR: test_integers_and_spaces (test_exercise.ParseTests.test_integers_and_spaces)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-fixture-hi59gwpd/test_exercise.py", line 7, in test_integers_and_spaces
+    self.assertEqual(parse_numbers(" 1, -2, 0 "), [1, -2, 0])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-fixture-hi59gwpd/exercise.py", line 2, in parse_numbers
+    raise NotImplementedError
+NotImplementedError
+
+======================================================================
+ERROR: test_non_integer (test_exercise.ParseTests.test_non_integer)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-fixture-hi59gwpd/test_exercise.py", line 16, in test_non_integer
+    parse_numbers("1,2.5")
+  File "/private/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-fixture-hi59gwpd/exercise.py", line 2, in parse_numbers
+    raise NotImplementedError
+NotImplementedError
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+FAILED (errors=5)
+
+Fixture: report
+Command: python3 -B -m unittest test_exercise.SummaryTests -v
+Exit: 1
+test_empty (test_exercise.SummaryTests.test_empty) ... ERROR
+test_values (test_exercise.SummaryTests.test_values) ... ERROR
+
+======================================================================
+ERROR: test_empty (test_exercise.SummaryTests.test_empty)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-fixture-jqlgxlsc/test_exercise.py", line 24, in test_empty
+    self.assertEqual(summarize([]), {"count": 0, "sum": 0})
+                     ^^^^^^^^^^^^^
+  File "/private/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-fixture-jqlgxlsc/exercise.py", line 6, in summarize
+    raise NotImplementedError
+NotImplementedError
+
+======================================================================
+ERROR: test_values (test_exercise.SummaryTests.test_values)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-fixture-jqlgxlsc/test_exercise.py", line 21, in test_values
+    self.assertEqual(summarize([1, -2, 4]), {"count": 3, "sum": 3})
+                     ^^^^^^^^^^^^^^^^^^^^^
+  File "/private/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-fixture-jqlgxlsc/exercise.py", line 6, in summarize
+    raise NotImplementedError
+NotImplementedError
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+FAILED (errors=2)
