@@ -1,0 +1,11 @@
+Command: python3 -B -m unittest test_exercise.ParseTests test_exercise.TitleTests -v
+Exit: 0
+test_empty_items (test_exercise.ParseTests.test_empty_items) ... ok
+test_integers_and_spaces (test_exercise.ParseTests.test_integers_and_spaces) ... ok
+test_non_integer (test_exercise.ParseTests.test_non_integer) ... ok
+test_title (test_exercise.TitleTests.test_title) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
