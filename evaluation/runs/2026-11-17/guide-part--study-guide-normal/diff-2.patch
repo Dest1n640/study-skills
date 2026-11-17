@@ -1,0 +1,11 @@
+--- turn-1/exercise.py
++++ turn-2/exercise.py
+@@ -3,7 +3,7 @@
+ 
+ 
+ def summarize(values):
+-    raise NotImplementedError
++    return {"count": len(values), "sum": sum(values)}
+ 
+ 
+ def format_title(name):
