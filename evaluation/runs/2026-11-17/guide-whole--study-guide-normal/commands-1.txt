@@ -1,0 +1,5 @@
+$ rg --files -g '!__pycache__/**' -g '!.git/**'
+working directory: /var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-guide-whole-a12lmzli
+stdout: (empty)
+stderr: (empty)
+exit status: 1
