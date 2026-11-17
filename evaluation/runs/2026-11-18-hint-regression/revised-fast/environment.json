@@ -1,0 +1,10 @@
+{
+  "workspace": "/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-hint-regression-3qk3o6tx",
+  "mode": "study-hint-fast",
+  "old_source": false,
+  "skill_sha256": "49a45c2f41606f6eb170972b0c430dc41b595a3c0fe7fee18240b481fa765994",
+  "policy_sha256": "0c1820e22ff855c1603935c6f3adb3d472f27949383355c7744a7c6c438dab5a",
+  "model": "not reported; CLI default configuration",
+  "invocation": "native Codex CLI",
+  "codex_version": "codex-cli 0.169.0"
+}
