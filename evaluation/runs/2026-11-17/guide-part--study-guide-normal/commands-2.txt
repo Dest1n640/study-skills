@@ -1,0 +1,84 @@
+[1] COMMAND:
+cat /Users/dest1n/Projects/study-skills/evaluation/runs/2026-11-17/guide-part--study-guide-normal/prompt-2.md
+RAW OUTPUT:
+Теперь реализуй только summarize(values): вернуть словарь count с числом элементов и sum с их суммой; для пустого списка оба значения нулевые. Объясни решение и проверь полный набор тестов.
+EXIT STATUS: 0
+
+[2] COMMAND:
+cat exercise.py test_exercise.py
+RAW OUTPUT:
+def parse_numbers(text):
+    return [int(part) for part in text.split(",")]
+
+
+def summarize(values):
+    raise NotImplementedError
+
+
+def format_title(name):
+    return f"Report: {name}"
+
+import unittest
+from exercise import format_title, parse_numbers, summarize
+
+
+class ParseTests(unittest.TestCase):
+    def test_integers_and_spaces(self):
+        self.assertEqual(parse_numbers(" 1, -2, 0 "), [1, -2, 0])
+
+    def test_empty_items(self):
+        for text in ["", "1,,2", "1,"]:
+            with self.subTest(text=text), self.assertRaises(ValueError):
+                parse_numbers(text)
+
+    def test_non_integer(self):
+        with self.assertRaises(ValueError):
+            parse_numbers("1,2.5")
+
+
+class SummaryTests(unittest.TestCase):
+    def test_values(self):
+        self.assertEqual(summarize([1, -2, 4]), {"count": 3, "sum": 3})
+
+    def test_empty(self):
+        self.assertEqual(summarize([]), {"count": 0, "sum": 0})
+
+
+class TitleTests(unittest.TestCase):
+    def test_title(self):
+        self.assertEqual(format_title("Expenses"), "Report: Expenses")
+
+
+if __name__ == "__main__":
+    unittest.main()
+
+EXIT STATUS: 0
+
+[3] TOOL apply_patch
+INPUT:
+*** Begin Patch
+*** Update File: /var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-guide-part-2kfisygt/exercise.py
+@@
+ def summarize(values):
+-    raise NotImplementedError
++    return {"count": len(values), "sum": sum(values)}
+*** End Patch
+RAW TOOL RESULT:
+{}
+Exit status: not supplied by apply_patch
+
+[4] COMMAND:
+python3 -m unittest -v
+RAW OUTPUT:
+test_empty_items (test_exercise.ParseTests) ... ok
+test_integers_and_spaces (test_exercise.ParseTests) ... ok
+test_non_integer (test_exercise.ParseTests) ... ok
+test_empty (test_exercise.SummaryTests) ... ok
+test_values (test_exercise.SummaryTests) ... ok
+test_title (test_exercise.TitleTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.000s
+
+OK
+EXIT STATUS: 0
