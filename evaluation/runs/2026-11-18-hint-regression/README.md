@@ -14,3 +14,7 @@ The original-version control preserved files this time, while one revised normal
 A separate [read-only experiment](readonly-probe/observation.txt) tests a runtime permission boundary, not a capability of SKILL.md. It is not installed into user settings.
 
 Read-only observation: the runtime-limited probe preserved source/tests, reproduced the expected assertion failure and returned guidance. This one run does not establish general reliability or prove that an attempted write was blocked. Command and actual events are retained. Enabling this runtime restriction as a product workflow is awaiting a user decision.
+
+## Approved final workflow
+
+The user approved a separate read-only Codex launch for hint, with never approvals, and an explicit resume/guide transition. Final updated [normal](final-study-hint-normal/review.md) and [fast](final-study-hint-fast/review.md) both preserved source/tests and read their final skill instructions. Replies still cite internal instructions; no full presentation-compliance claim is made. Chat-output boundaries remain instructional. Full interactive resume is not tested.
