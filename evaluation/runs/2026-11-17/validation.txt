@@ -1,0 +1,4 @@
+Metadata: four YAML frontmatters and Codex explicit-only policy files parsed successfully.
+Local README, evaluation and native-checklist links resolved.
+OpenSpec: 4 items passed strict validation.
+Native hint-normal: two failures; cause not confirmed.
