@@ -1,0 +1,8 @@
+{
+  "invocation": "native Codex CLI; read-only runtime experiment",
+  "workspace": "/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-hint-readonly-2waja6yu",
+  "model": "not reported; CLI default configuration",
+  "codex_version": "codex-cli 0.169.0",
+  "skill_sha256": "184c72e83845f538d6760b024368328379601e0a6104281871c17e5a227c99ea",
+  "policy_sha256": "0c1820e22ff855c1603935c6f3adb3d472f27949383355c7744a7c6c438dab5a"
+}
