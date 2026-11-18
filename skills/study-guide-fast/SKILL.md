@@ -2,6 +2,7 @@
 name: study-guide-fast
 description: Concise explanations and implementation of requested parts.
 disable-model-invocation: true
+license: MIT
 ---
 
 # Study guide: fast
