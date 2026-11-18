@@ -1,6 +1,6 @@
 ## 1. Bilingual README update
 
-- [ ] 1.1 Update `README.md` and `README.ru.md` with the canonical repository link and `npx skills add Dest1n640/study-skills` commands, including explicit selection of all four product skills and the interactive alternative. Remove local-only/unpublished-placeholder wording. Verify both languages contain the same repository and four skill names, no `OWNER/REPO`, and retain local installation and explicit invocation examples without recommending `--all`.
+- [ ] 1.1 Update `README.md` and `README.ru.md` with the canonical repository link and the exact single-skill and four-skill installation commands in `proposal.md`, including `--agent codex` and `--yes`. State the Node.js prerequisite, run-from-project context, project-local default, and `claude-code` agent replacement; label the shorter alternative interactive. Remove local-only/unpublished-placeholder wording. Verify both languages have matching copyable commands, the correct four skill names, no `OWNER/REPO`, and retain local-checkout installation and explicit invocation examples without recommending `--all`. Check command syntax against the linked upstream reference; do not report this as a remote installation test.
 - [ ] 1.2 Delete the complete `Protected hint sessions in Codex` and `Защищённый hint в Codex` sections through the next heading. Verify neither README contains these sections, their launch/resume commands, or relocated copies, while license notices and general evidence/compatibility limits remain.
 
 ## 2. Current project context
