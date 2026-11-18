@@ -1,6 +1,9 @@
 schema: spec-driven
 context: 'Study skills is a Markdown Agent Skills project for learning programming at any experience level.
 
+  Public source repository: https://github.com/Dest1n640/study-skills. GitHub source availability is confirmed;
+  remote installation and publication of all current local revisions are not verified.
+
   Four explicitly selected modes: study-hint-normal, study-hint-fast, study-guide-normal, study-guide-fast.
 
   Hint leaves assignment implementation to the learner; detailed pseudocode is limited to the current step.
@@ -21,7 +24,10 @@ context: 'Study skills is a Markdown Agent Skills project for learning programmi
 
   Local Codex installation verified. Following historical writable-session failures, the user approved read-only/never
   launch for hint and explicit workspace-write/on-request resume for guide. Final read-only hint checks preserved
-  files; chat output and interactive switching are not guaranteed. Other clients and publication remain unverified.
+  files; chat output and interactive switching are not guaranteed. Other clients remain unverified.
+
+  Both READMEs use the concrete repository installation commands. At the user request, their protected-hint
+  launch/resume sections were removed; the approved permission guidance remains in the product skills.
 
   Read openspec/README.md for navigation and openspec/DECISIONS.md for current decisions and pending work.
 
