@@ -29,21 +29,33 @@
 
 ## Установка и вызов
 
-Это локальный черновик. После публикации вместо `OWNER/REPO` нужно указать адрес настоящего репозитория:
+Нужен [Node.js 22.20 или новее](https://github.com/vercel-labs/skills#install-a-skill). Выполняй команды из папки своего проекта по программированию: по умолчанию скиллы устанавливаются в этот проект.
+
+Установить один скилл из [Dest1n640/study-skills](https://github.com/Dest1n640/study-skills) для Codex:
 
 ```sh
-npx skills add OWNER/REPO --agent codex --skill study-hint-normal study-hint-fast study-guide-normal study-guide-fast
+npx skills add Dest1n640/study-skills --agent codex --skill study-hint-normal --yes
 ```
 
-Из локальной папки проекта:
+Установить все четыре учебных скилла для Codex:
+
+```sh
+npx skills add Dest1n640/study-skills --agent codex \
+  --skill study-hint-normal study-hint-fast study-guide-normal study-guide-fast \
+  --yes
+```
+
+Команды используют готовый [Skills CLI](https://github.com/vercel-labs/skills/blob/main/docs/commands.md#skills-add); `--yes` пропускает подтверждения установщика. Для Claude Code замени `--agent codex` на `--agent claude-code`. Для установки другого отдельного режима замени `study-hint-normal` на его имя из таблицы выше.
+
+Короткий интерактивный вариант — `npx skills add Dest1n640/study-skills`: выбери своего агента и только четыре имени `study-*`. В репозитории есть служебные помощники `openspec-*`, которые не нужны ученику; `--all` для установки учебного набора не используй.
+
+Из локальной копии репозитория:
 
 ```sh
 npx skills add . --agent codex --skill study-hint-normal study-hint-fast study-guide-normal study-guide-fast
 ```
 
-Используется готовый [Skills CLI](https://github.com/vercel-labs/skills); собственный установщик не нужен. Команда выбирает только четыре учебных скилла. Для другого поддерживаемого клиента можно изменить выбор агента. Локальная установка в изолированный проект проверена для Codex; удалённая установка пока не проверялась. Нативный запуск выявил нарушение границы hint — подробности в [результатах](evaluation/RESULTS.md).
-
-Короткий интерактивный вариант — `npx skills add OWNER/REPO`: выбери только четыре имени `study-*`. В репозитории есть служебные помощники `openspec-*`, которые не нужны ученику; `--all` для установки учебного набора не используй.
+Локальная установка четырёх скиллов в изолированный проект проверена для Codex; удалённая установка пока не проверялась. Нативный запуск выявил нарушение границы hint — подробности в [результатах](evaluation/RESULTS.md). После установки перезапусти агента или обнови обнаружение скиллов, если этого требует клиент.
 
 В Codex: `$study-hint-normal`, `$study-hint-fast`, `$study-guide-normal`, `$study-guide-fast`. В Claude Code — `/study-hint-normal` и аналогично остальные. Для смены режима явно выбери другой скилл или сообщи, что заканчиваешь учебный режим.
 
@@ -54,29 +66,6 @@ npx skills add . --agent codex --skill study-hint-normal study-hint-fast study-g
 Сценарии находятся в [evaluation/SCENARIOS.md](evaluation/SCENARIOS.md), результаты — в [evaluation/RESULTS.md](evaluation/RESULTS.md). Успешные тесты программы не доказывают понимание ученика. Скиллы задают инструкции, а не технически непреодолимый запрет.
 
 Никаких обязательных квизов, профилей, XP, журналов прогресса или системы повторения в первой версии нет. Оригинальные материалы проекта распространяются под MIT. Источники идей и подробности совместимости перечислены в [English README](README.md).
-
-
-## Защищённый hint в Codex
-
-Для работы с файлами задания запусти Codex с запретом записи, затем явно выбери hint:
-
-```sh
-codex --cd /path/to/project --sandbox read-only --ask-for-approval never
-```
-
-```text
-$study-hint-normal
-```
-
-Эти настройки подходят обоим hint-режимам. Сам SKILL.md права клиента не переключает. Без ограничения клиента запрет записи остаётся инструкцией: в проверках агент её нарушал. Read-only не ограничивает готовый код в сообщениях.
-
-Чтобы сохранить чат и перейти в guide, выйди через `/quit`, затем возобнови эту сессию по её ID (замени SESSION_ID и путь проекта):
-
-```sh
-codex resume SESSION_ID --cd /path/to/project --sandbox workspace-write --ask-for-approval on-request
-```
-
-После запуска явно выбери `$study-guide-normal` или `$study-guide-fast`. Для возврата к защищённому hint снова возобнови тот же ID с `--sandbox read-only --ask-for-approval never`, затем выбери hint. Простая смена скилла не меняет разрешения. Поддержка флагов проверена локально; полный интерактивный переход через resume пока не проверялся.
 
 ## Лицензия
 
