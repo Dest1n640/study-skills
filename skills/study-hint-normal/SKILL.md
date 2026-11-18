@@ -2,6 +2,7 @@
 name: study-hint-normal
 description: Guided questions and gradual hints; the learner writes the code.
 disable-model-invocation: true
+license: MIT
 ---
 
 # Study hint: normal
