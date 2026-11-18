@@ -54,11 +54,11 @@ Choose another study skill explicitly to change mode, or say that you are ending
 
 The files use the open [Agent Skills format](https://agentskills.io/specification). Codex is the initial behavioral evaluation target; see [evaluation scenarios](evaluation/SCENARIOS.md) and [results](evaluation/RESULTS.md). Claude Code and other clients are not behaviorally tested or installation-certified.
 
-These are instructions for an assistant, not a technical barrier. Passing program tests does not prove that the learner understands. No quizzes, learning profiles, XP, persistent progress tracking, or spaced-repetition scheduler are required. A release license has not yet been selected.
+These are instructions for an assistant, not a technical barrier. Passing program tests does not prove that the learner understands. No quizzes, learning profiles, XP, persistent progress tracking, or spaced-repetition scheduler are required. Original project materials are licensed under MIT.
 
 ## Inspiration
 
-Independently written instructions informed by examining [TuTor](https://github.com/kevinnio/tutor), [programming-tutor](https://github.com/cdmorozov/claude-tutors), [Think Before Code](https://github.com/Far-200/think-before-code), and [ai-socratic-tutor](https://github.com/bstellato/ai-teaching-skills). Their implementations and licenses remain separate. No third-party skill text is bundled.
+Independently written instructions informed by examining [TuTor](https://github.com/kevinnio/tutor), [programming-tutor](https://github.com/cdmorozov/claude-tutors), [Think Before Code](https://github.com/Far-200/think-before-code), and [ai-socratic-tutor](https://github.com/bstellato/ai-teaching-skills). Their implementations and licenses remain separate. No third-party tutoring skill text is bundled. OpenSpec development-helper notices are retained separately.
 
 
 ## Protected hint sessions in Codex
@@ -82,3 +82,7 @@ codex resume SESSION_ID --cd /path/to/project --sandbox workspace-write --ask-fo
 ```
 
 Then explicitly select `$study-guide-normal` or `$study-guide-fast`. To return to protected hint, quit and resume the same ID with `--sandbox read-only --ask-for-approval never`, then select a hint skill. Changing the skill alone does not change permissions. The CLI flags were checked locally; the full interactive resume sequence has not been exercised.
+
+## License
+
+[MIT](LICENSE), Copyright (c) 2026 Dest1n640. Each product skill includes its own LICENSE copy for independent installation. Upstream development-helper notices are retained in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md); external materials retain their own terms.
