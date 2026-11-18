@@ -2,6 +2,7 @@
 name: study-hint-fast
 description: Direct, concise hints for the current step; the learner writes the code.
 disable-model-invocation: true
+license: MIT
 ---
 
 # Study hint: fast
