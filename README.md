@@ -17,15 +17,25 @@ All modes read relevant project files and run available existing checks. They co
 
 ## Install
 
-This is a local draft, not a published package. After publication, replace `OWNER/REPO` with the actual GitHub repository:
+Requires [Node.js 22.20 or later](https://github.com/vercel-labs/skills#install-a-skill). Run these commands from your programming project directory; skills are installed to that project by default.
+
+Install one skill from [Dest1n640/study-skills](https://github.com/Dest1n640/study-skills) for Codex:
 
 ```sh
-npx skills add OWNER/REPO --agent codex --skill study-hint-normal study-hint-fast study-guide-normal study-guide-fast
+npx skills add Dest1n640/study-skills --agent codex --skill study-hint-normal --yes
 ```
 
-The [Skills CLI](https://github.com/vercel-labs/skills) selects only the four product skills with this command. To choose another supported client, change the agent selection. Use its current prerequisites and supported-agent list. No custom installer is included.
+Install all four study skills for Codex:
 
-The shorter interactive alternative is `npx skills add OWNER/REPO`: select only the four `study-*` names. This repository also contains `openspec-*` development helpers; do not select those for tutoring or use `--all` to install the product.
+```sh
+npx skills add Dest1n640/study-skills --agent codex \
+  --skill study-hint-normal study-hint-fast study-guide-normal study-guide-fast \
+  --yes
+```
+
+These commands use the [Skills CLI](https://github.com/vercel-labs/skills/blob/main/docs/commands.md#skills-add); `--yes` skips installer confirmation prompts. To install for Claude Code, replace `--agent codex` with `--agent claude-code`. To install a different single mode, replace `study-hint-normal` with its name from the table above.
+
+The shorter interactive alternative is `npx skills add Dest1n640/study-skills`: select your agent and only the four `study-*` names. This repository also contains `openspec-*` development helpers; do not select those for tutoring or use `--all` to install the product.
 
 For local installation from this checkout:
 
@@ -59,29 +69,6 @@ These are instructions for an assistant, not a technical barrier. Passing progra
 ## Inspiration
 
 Independently written instructions informed by examining [TuTor](https://github.com/kevinnio/tutor), [programming-tutor](https://github.com/cdmorozov/claude-tutors), [Think Before Code](https://github.com/Far-200/think-before-code), and [ai-socratic-tutor](https://github.com/bstellato/ai-teaching-skills). Their implementations and licenses remain separate. No third-party tutoring skill text is bundled. OpenSpec development-helper notices are retained separately.
-
-
-## Protected hint sessions in Codex
-
-For work on assignment files, start a read-only session and then explicitly select a hint skill:
-
-```sh
-codex --cd /path/to/project --sandbox read-only --ask-for-approval never
-```
-
-```text
-$study-hint-normal
-```
-
-Both hint modes use the same launch settings. A SKILL.md cannot change client permissions. Without the client restriction, hint is only a behavioral instruction and has been observed editing files. Read-only does not enforce what code appears in chat.
-
-To keep the chat while moving to guide, exit using `/quit`, then resume that session with its ID (replace SESSION_ID and the project path):
-
-```sh
-codex resume SESSION_ID --cd /path/to/project --sandbox workspace-write --ask-for-approval on-request
-```
-
-Then explicitly select `$study-guide-normal` or `$study-guide-fast`. To return to protected hint, quit and resume the same ID with `--sandbox read-only --ask-for-approval never`, then select a hint skill. Changing the skill alone does not change permissions. The CLI flags were checked locally; the full interactive resume sequence has not been exercised.
 
 ## License
 
