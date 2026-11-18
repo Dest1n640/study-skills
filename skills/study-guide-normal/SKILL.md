@@ -2,6 +2,7 @@
 name: study-guide-normal
 description: Explain the approach and implement requested parts together.
 disable-model-invocation: true
+license: MIT
 ---
 
 # Study guide: normal
