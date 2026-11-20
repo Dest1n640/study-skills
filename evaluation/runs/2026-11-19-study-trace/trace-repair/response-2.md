@@ -1,0 +1,5 @@
+В `submit_order` изменил только проверку количества с `quantity < 0` на `quantity <= 0`. [orders.py](/private/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-trace-eval.mc8CS4Y7/workspaces/trace-repair/orders.py:5)
+
+CLI по-прежнему преобразует `"0"` в целое `0` и передаёт `"A7"` и `0` в `submit_order`. Раньше проверка пропускала ноль, заказ сохранялся с суммой `0`, и CLI печатал результат со статусом `201`. Теперь условие срабатывает, и `submit_order` сразу возвращает `{'status': 422}` до расчёта суммы и создания хранилища. [cli.py](/private/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-trace-eval.mc8CS4Y7/workspaces/trace-repair/cli.py:8)
+
+Запуск `python3 -B cli.py A7 0` вывел `{'status': 422}`. Оба теста прошли. Отдельная проверка подтвердила, что для `A7 0` фабрика хранилища не вызывается.

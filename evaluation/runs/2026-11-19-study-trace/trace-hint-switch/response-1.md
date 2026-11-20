@@ -1,0 +1,7 @@
+Команда `python3 -B cli.py A7 2` сохраняет в памяти заказ `{'sku': 'A7', 'quantity': 2, 'total': 300}` и печатает `{'status': 201, 'id': 1, 'total': 300}`. Я проверил вывод запуском команды.
+
+1. [cli.py](/private/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-trace-eval.mc8CS4Y7/workspaces/trace-hint-switch/cli.py:8) передаёт `sys.argv[1:]` в `run`. `argparse` оставляет `A7` строкой и преобразует `"2"` в целое число `2`. Затем `run` вызывает `submit_order("A7", 2, MemoryStore)`.
+2. [orders.py](/private/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-trace-eval.mc8CS4Y7/workspaces/trace-hint-switch/orders.py:4) проверяет `quantity < 0`. Для `2` условие ложно, поэтому функция вычисляет `2 × 150 = 300`, создаёт хранилище и передаёт ему словарь заказа.
+3. [storage.py](/private/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-trace-eval.mc8CS4Y7/workspaces/trace-hint-switch/storage.py:5) добавляет заказ в пустой список и возвращает его длину `1`. `submit_order` использует это число как `id` и возвращает результат, который печатает CLI.
+
+В проверке количества есть расхождение с README и тестом. Условие `quantity < 0` пропускает `0`, хотя для него ожидается статус `422`. На заказ `A7 2` это не влияет.

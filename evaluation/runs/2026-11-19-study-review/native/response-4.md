@@ -1,0 +1,1 @@
+В [exercise.py](/private/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-review-eval.SIi8ydSC/workspaces/native/exercise.py:2) заменил `>=` на `>`, чтобы `count_positive` считал только числа строго больше нуля. Все 3 теста прошли, включая проверку на исключение нуля.

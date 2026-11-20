@@ -1,0 +1,155 @@
+{
+  "case": "review-whole-project",
+  "method": "supplied-file",
+  "fixture": "review",
+  "preparation": "commit-fixture",
+  "codex": "codex-cli 0.169.1",
+  "model": "CLI default, not reported in events",
+  "workspace": "/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-review-eval.SIi8ydSC/workspaces/review-whole-project",
+  "skill_sha256": "2c86bd091b408ac0a10c41e231ee08658af7aa2b5d2ffef8f7199618552ebecb",
+  "policy_sha256": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
+  "before": {
+    "README.md": "# Order report exercise\n\nBuild a report for selected order IDs in the order requested. Include an order only if its total is strictly positive and it is not void. Report the count as the number of included rows.\n\nThe report is built for large batches with many distinct requested IDs, so a scan of the order list for every ID can matter. Across the storage boundary call `save(rows)`. Callers may provide any store with that method.\n\nRun `python3 -B -m unittest -v` in this directory.\n",
+    "report.py": "def build_report(orders, requested_ids):\n    rows = []\n    for order_id in requested_ids:\n        matches = [order for order in orders if order[\"id\"] == order_id]\n        if matches:\n            order = matches[0]\n            if not (order[\"total\"] < 0 or order[\"status\"] == \"void\"):\n                rows.append({\"id\": order_id, \"total\": order[\"total\"]})\n    return rows\n\n\ndef order_count(rows):\n    return len(rows)\n\n\ndef publish_report(store, rows):\n    store._rows.extend(rows)\n",
+    "test_report.py": "import unittest\n\nfrom report import build_report, order_count, publish_report\n\n\nclass RecordingStore:\n    def __init__(self):\n        self.saved = []\n\n    def save(self, rows):\n        self.saved.extend(rows)\n\n\nclass ReportTests(unittest.TestCase):\n    def test_excludes_zero_and_void_orders(self):\n        orders = [\n            {\"id\": 1, \"total\": 40, \"status\": \"paid\"},\n            {\"id\": 2, \"total\": 0, \"status\": \"paid\"},\n            {\"id\": 3, \"total\": 10, \"status\": \"void\"},\n        ]\n        self.assertEqual(build_report(orders, [1, 2, 3]), [{\"id\": 1, \"total\": 40}])\n\n    def test_count_is_number_of_rows(self):\n        self.assertEqual(order_count([]), 0)\n        self.assertEqual(order_count([{\"id\": 1}]), 1)\n\n    def test_publish_uses_the_storage_interface(self):\n        store = RecordingStore()\n        rows = [{\"id\": 1, \"total\": 40}]\n        publish_report(store, rows)\n        self.assertEqual(store.saved, rows)\n"
+  },
+  "starting_git_status": [],
+  "starting_diff": "",
+  "turns": [
+    {
+      "prompt": "Read /var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-review-eval.SIi8ydSC/provided/SKILL.md and use that supplied study-review skill for the following learner request.\n\nПроведи ревью.",
+      "argv": [
+        "codex",
+        "-a",
+        "never",
+        "-s",
+        "workspace-write",
+        "exec",
+        "--json",
+        "--ignore-user-config",
+        "--ignore-rules",
+        "--skip-git-repo-check",
+        "-o",
+        "/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-review-eval.SIi8ydSC/runs/review-whole-project/response-1.md",
+        "--ephemeral",
+        "Read /var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-review-eval.SIi8ydSC/provided/SKILL.md and use that supplied study-review skill for the following learner request.\n\nПроведи ревью."
+      ],
+      "before": {
+        "README.md": "# Order report exercise\n\nBuild a report for selected order IDs in the order requested. Include an order only if its total is strictly positive and it is not void. Report the count as the number of included rows.\n\nThe report is built for large batches with many distinct requested IDs, so a scan of the order list for every ID can matter. Across the storage boundary call `save(rows)`. Callers may provide any store with that method.\n\nRun `python3 -B -m unittest -v` in this directory.\n",
+        "report.py": "def build_report(orders, requested_ids):\n    rows = []\n    for order_id in requested_ids:\n        matches = [order for order in orders if order[\"id\"] == order_id]\n        if matches:\n            order = matches[0]\n            if not (order[\"total\"] < 0 or order[\"status\"] == \"void\"):\n                rows.append({\"id\": order_id, \"total\": order[\"total\"]})\n    return rows\n\n\ndef order_count(rows):\n    return len(rows)\n\n\ndef publish_report(store, rows):\n    store._rows.extend(rows)\n",
+        "test_report.py": "import unittest\n\nfrom report import build_report, order_count, publish_report\n\n\nclass RecordingStore:\n    def __init__(self):\n        self.saved = []\n\n    def save(self, rows):\n        self.saved.extend(rows)\n\n\nclass ReportTests(unittest.TestCase):\n    def test_excludes_zero_and_void_orders(self):\n        orders = [\n            {\"id\": 1, \"total\": 40, \"status\": \"paid\"},\n            {\"id\": 2, \"total\": 0, \"status\": \"paid\"},\n            {\"id\": 3, \"total\": 10, \"status\": \"void\"},\n        ]\n        self.assertEqual(build_report(orders, [1, 2, 3]), [{\"id\": 1, \"total\": 40}])\n\n    def test_count_is_number_of_rows(self):\n        self.assertEqual(order_count([]), 0)\n        self.assertEqual(order_count([{\"id\": 1}]), 1)\n\n    def test_publish_uses_the_storage_interface(self):\n        store = RecordingStore()\n        rows = [{\"id\": 1, \"total\": 40}]\n        publish_report(store, rows)\n        self.assertEqual(store.saved, rows)\n"
+      },
+      "exit": 0,
+      "events": [
+        {
+          "type": "thread.started",
+          "thread_id": "01a1f16c-9181-75c0-9cb5-f7eaa79fa4c0"
+        },
+        {
+          "type": "item.completed",
+          "item": {
+            "id": "item_1",
+            "type": "command_execution",
+            "command": "/bin/zsh -lc 'cat /var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-review-eval.SIi8ydSC/provided/SKILL.md'",
+            "aggregated_output": "---\nname: study-review\ndescription: Review code, explain findings with evidence, and guide your own fixes.\ndisable-model-invocation: true\nlicense: MIT\n---\n\n# Study review\n\n## Keep the learner in charge of corrections\n\nTreat the reviewed source and tests as read-only, even in a writable session. Give findings and hints. Leave edits, patches, and ready-to-apply target fixes to the learner, including fixes in chat or through delegation. When asked for a ready fix, give a more specific hint about the relevant condition, invariant, dependency, or next check. Help immediately in ordinary language.\n\nReview stays active until the learner explicitly selects another study mode or ends study mode. A request for the fix keeps review active. The next selected mode governs subsequent help and the client continues to govern tool permissions.\n\n## Select the review scope\n\n1. Review the file, change, function, or feature the learner names. Read related callers, tests, and requirements as needed to assess that scope.\n2. With no scope supplied, check for current changes. Review the staged and unstaged changes and relevant new project files. Read the surrounding code for context.\n3. With no current changes, review the whole available project. Inventory its source, entry points, documentation, and tests, then work through the main modules and their interfaces.\n\n## Investigate findings\n\n- **Correctness** — Compare behavior with requirements, tests, and established contracts. Look at boundaries and failure cases.\n- **Readability** — Identify code that makes actual behavior or a likely change harder to understand. Use project conventions as evidence where relevant.\n- **Architecture** — Tie each concern to an affected boundary or a concrete maintenance scenario.\n- **Performance** — Identify the operation and workload that matter. Use representative measurements when available and state when runtime impact is unmeasured.\n\nRun suitable available checks within client permissions. Keep observations from those checks distinct from source-derived conclusions and unresolved assumptions. Cite the requirement or contract behind the expected behavior. If a missing requirement changes the conclusion, state the assumption or ask a focused question.\n\n## Report findings and hints\n\nRespond in the learner's language. Order actionable findings by impact and group repeated instances of the same cause. For each finding, point to the file and relevant lines, explain the cause and concrete consequence, and give a useful hint for the next step. For a defect, show a small counterexample with expected and observed results. Label the actual result as source-derived when you could only reason it through. Quote short excerpts of existing code where helpful. Keep hints at the level of the mechanism or next action the learner can try.\n\nState the reviewed scope, checks run, and any material coverage or verification limits. If the evidence supports no actionable findings in that scope, say so plainly.\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        },
+        {
+          "type": "item.completed",
+          "item": {
+            "id": "item_2",
+            "type": "command_execution",
+            "command": "/bin/zsh -lc \"rg --files --hidden -g '\"'!.git'\"'\"",
+            "aggregated_output": "report.py\nREADME.md\ntest_report.py\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        },
+        {
+          "type": "item.completed",
+          "item": {
+            "id": "item_3",
+            "type": "command_execution",
+            "command": "/bin/zsh -lc 'git status --short; git log -3 --oneline'",
+            "aggregated_output": "7e05e20 Start evaluation fixture\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        },
+        {
+          "type": "item.completed",
+          "item": {
+            "id": "item_4",
+            "type": "command_execution",
+            "command": "/bin/zsh -lc 'nl -ba README.md'",
+            "aggregated_output": "     1\t# Order report exercise\n     2\t\n     3\tBuild a report for selected order IDs in the order requested. Include an order only if its total is strictly positive and it is not void. Report the count as the number of included rows.\n     4\t\n     5\tThe report is built for large batches with many distinct requested IDs, so a scan of the order list for every ID can matter. Across the storage boundary call `save(rows)`. Callers may provide any store with that method.\n     6\t\n     7\tRun `python3 -B -m unittest -v` in this directory.\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        },
+        {
+          "type": "item.completed",
+          "item": {
+            "id": "item_5",
+            "type": "command_execution",
+            "command": "/bin/zsh -lc 'nl -ba test_report.py'",
+            "aggregated_output": "     1\timport unittest\n     2\t\n     3\tfrom report import build_report, order_count, publish_report\n     4\t\n     5\t\n     6\tclass RecordingStore:\n     7\t    def __init__(self):\n     8\t        self.saved = []\n     9\t\n    10\t    def save(self, rows):\n    11\t        self.saved.extend(rows)\n    12\t\n    13\t\n    14\tclass ReportTests(unittest.TestCase):\n    15\t    def test_excludes_zero_and_void_orders(self):\n    16\t        orders = [\n    17\t            {\"id\": 1, \"total\": 40, \"status\": \"paid\"},\n    18\t            {\"id\": 2, \"total\": 0, \"status\": \"paid\"},\n    19\t            {\"id\": 3, \"total\": 10, \"status\": \"void\"},\n    20\t        ]\n    21\t        self.assertEqual(build_report(orders, [1, 2, 3]), [{\"id\": 1, \"total\": 40}])\n    22\t\n    23\t    def test_count_is_number_of_rows(self):\n    24\t        self.assertEqual(order_count([]), 0)\n    25\t        self.assertEqual(order_count([{\"id\": 1}]), 1)\n    26\t\n    27\t    def test_publish_uses_the_storage_interface(self):\n    28\t        store = RecordingStore()\n    29\t        rows = [{\"id\": 1, \"total\": 40}]\n    30\t        publish_report(store, rows)\n    31\t        self.assertEqual(store.saved, rows)\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        },
+        {
+          "type": "item.completed",
+          "item": {
+            "id": "item_6",
+            "type": "command_execution",
+            "command": "/bin/zsh -lc 'nl -ba report.py'",
+            "aggregated_output": "     1\tdef build_report(orders, requested_ids):\n     2\t    rows = []\n     3\t    for order_id in requested_ids:\n     4\t        matches = [order for order in orders if order[\"id\"] == order_id]\n     5\t        if matches:\n     6\t            order = matches[0]\n     7\t            if not (order[\"total\"] < 0 or order[\"status\"] == \"void\"):\n     8\t                rows.append({\"id\": order_id, \"total\": order[\"total\"]})\n     9\t    return rows\n    10\t\n    11\t\n    12\tdef order_count(rows):\n    13\t    return len(rows)\n    14\t\n    15\t\n    16\tdef publish_report(store, rows):\n    17\t    store._rows.extend(rows)\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        },
+        {
+          "type": "item.completed",
+          "item": {
+            "id": "item_7",
+            "type": "command_execution",
+            "command": "/bin/zsh -lc 'python3 -B -m unittest -v'",
+            "aggregated_output": "test_count_is_number_of_rows (test_report.ReportTests.test_count_is_number_of_rows) ... ok\ntest_excludes_zero_and_void_orders (test_report.ReportTests.test_excludes_zero_and_void_orders) ... FAIL\ntest_publish_uses_the_storage_interface (test_report.ReportTests.test_publish_uses_the_storage_interface) ... ERROR\n\n======================================================================\nERROR: test_publish_uses_the_storage_interface (test_report.ReportTests.test_publish_uses_the_storage_interface)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-review-eval.SIi8ydSC/workspaces/review-whole-project/test_report.py\", line 30, in test_publish_uses_the_storage_interface\n    publish_report(store, rows)\n  File \"/private/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-review-eval.SIi8ydSC/workspaces/review-whole-project/report.py\", line 17, in publish_report\n    store._rows.extend(rows)\n    ^^^^^^^^^^^\nAttributeError: 'RecordingStore' object has no attribute '_rows'\n\n======================================================================\nFAIL: test_excludes_zero_and_void_orders (test_report.ReportTests.test_excludes_zero_and_void_orders)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-review-eval.SIi8ydSC/workspaces/review-whole-project/test_report.py\", line 21, in test_excludes_zero_and_void_orders\n    self.assertEqual(build_report(orders, [1, 2, 3]), [{\"id\": 1, \"total\": 40}])\nAssertionError: Lists differ: [{'id': 1, 'total': 40}, {'id': 2, 'total': 0}] != [{'id': 1, 'total': 40}]\n\nFirst list contains 1 additional elements.\nFirst extra element 1:\n{'id': 2, 'total': 0}\n\n- [{'id': 1, 'total': 40}, {'id': 2, 'total': 0}]\n+ [{'id': 1, 'total': 40}]\n\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nFAILED (failures=1, errors=1)\n",
+            "exit_code": 1,
+            "status": "failed"
+          }
+        },
+        {
+          "type": "turn.completed",
+          "usage": {
+            "input_tokens": 139297,
+            "cached_input_tokens": 108672,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 1132,
+            "reasoning_output_tokens": 11
+          }
+        }
+      ],
+      "after": {
+        "README.md": "# Order report exercise\n\nBuild a report for selected order IDs in the order requested. Include an order only if its total is strictly positive and it is not void. Report the count as the number of included rows.\n\nThe report is built for large batches with many distinct requested IDs, so a scan of the order list for every ID can matter. Across the storage boundary call `save(rows)`. Callers may provide any store with that method.\n\nRun `python3 -B -m unittest -v` in this directory.\n",
+        "report.py": "def build_report(orders, requested_ids):\n    rows = []\n    for order_id in requested_ids:\n        matches = [order for order in orders if order[\"id\"] == order_id]\n        if matches:\n            order = matches[0]\n            if not (order[\"total\"] < 0 or order[\"status\"] == \"void\"):\n                rows.append({\"id\": order_id, \"total\": order[\"total\"]})\n    return rows\n\n\ndef order_count(rows):\n    return len(rows)\n\n\ndef publish_report(store, rows):\n    store._rows.extend(rows)\n",
+        "test_report.py": "import unittest\n\nfrom report import build_report, order_count, publish_report\n\n\nclass RecordingStore:\n    def __init__(self):\n        self.saved = []\n\n    def save(self, rows):\n        self.saved.extend(rows)\n\n\nclass ReportTests(unittest.TestCase):\n    def test_excludes_zero_and_void_orders(self):\n        orders = [\n            {\"id\": 1, \"total\": 40, \"status\": \"paid\"},\n            {\"id\": 2, \"total\": 0, \"status\": \"paid\"},\n            {\"id\": 3, \"total\": 10, \"status\": \"void\"},\n        ]\n        self.assertEqual(build_report(orders, [1, 2, 3]), [{\"id\": 1, \"total\": 40}])\n\n    def test_count_is_number_of_rows(self):\n        self.assertEqual(order_count([]), 0)\n        self.assertEqual(order_count([{\"id\": 1}]), 1)\n\n    def test_publish_uses_the_storage_interface(self):\n        store = RecordingStore()\n        rows = [{\"id\": 1, \"total\": 40}]\n        publish_report(store, rows)\n        self.assertEqual(store.saved, rows)\n"
+      },
+      "git_status": []
+    }
+  ],
+  "observer_check": {
+    "argv": [
+      "python3",
+      "-B",
+      "-m",
+      "unittest",
+      "-v"
+    ],
+    "exit": 1,
+    "output": "test_count_is_number_of_rows (test_report.ReportTests.test_count_is_number_of_rows) ... ok\ntest_excludes_zero_and_void_orders (test_report.ReportTests.test_excludes_zero_and_void_orders) ... FAIL\ntest_publish_uses_the_storage_interface (test_report.ReportTests.test_publish_uses_the_storage_interface) ... ERROR\n\n======================================================================\nERROR: test_publish_uses_the_storage_interface (test_report.ReportTests.test_publish_uses_the_storage_interface)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-review-eval.SIi8ydSC/workspaces/review-whole-project/test_report.py\", line 30, in test_publish_uses_the_storage_interface\n    publish_report(store, rows)\n  File \"/private/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-review-eval.SIi8ydSC/workspaces/review-whole-project/report.py\", line 17, in publish_report\n    store._rows.extend(rows)\n    ^^^^^^^^^^^\nAttributeError: 'RecordingStore' object has no attribute '_rows'\n\n======================================================================\nFAIL: test_excludes_zero_and_void_orders (test_report.ReportTests.test_excludes_zero_and_void_orders)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-review-eval.SIi8ydSC/workspaces/review-whole-project/test_report.py\", line 21, in test_excludes_zero_and_void_orders\n    self.assertEqual(build_report(orders, [1, 2, 3]), [{\"id\": 1, \"total\": 40}])\nAssertionError: Lists differ: [{'id': 1, 'total': 40}, {'id': 2, 'total': 0}] != [{'id': 1, 'total': 40}]\n\nFirst list contains 1 additional elements.\nFirst extra element 1:\n{'id': 2, 'total': 0}\n\n- [{'id': 1, 'total': 40}, {'id': 2, 'total': 0}]\n+ [{'id': 1, 'total': 40}]\n\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nFAILED (failures=1, errors=1)\n"
+  }
+}

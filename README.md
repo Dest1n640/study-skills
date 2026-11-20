@@ -2,7 +2,7 @@
 
 [Русское описание](README.ru.md)
 
-Four explicitly selected programming-learning skills for learners at any experience level. Learn how to choose an approach and implement it with help that fits the current obstacle.
+Six explicitly selected programming-learning skills for learners at any experience level. Choose help with an approach, implementation, review, or walkthrough.
 
 | Skill | How it helps |
 | --- | --- |
@@ -10,10 +10,16 @@ Four explicitly selected programming-learning skills for learners at any experie
 | `study-hint-fast` | Gives direct, compact hints. You write the assignment code. |
 | `study-guide-normal` | Explains approaches and implements concrete parts you request. |
 | `study-guide-fast` | Helps implement requested parts with concise explanations. |
+| `study-review` | Reviews existing code, explains findings with evidence, and gives hints for fixes you make yourself. |
+| `study-trace` | Follows one concrete input through existing code, with source locations and a diagram when it clarifies the route. |
 
 Hint allows pseudocode for the current step, syntax examples, and materially different small examples. It does not provide or edit the target implementation. Guide first turns "do the whole assignment" into a plan. You may request specific parts in sequence, so it may eventually write all the code. Guide checks your understanding only when you ask.
 
-All modes read relevant project files and run available existing checks. They compare applicable approaches, explain why a method fits, and adapt explanation depth from the conversation. Tutors respond in your language. Fast changes explanation length and directness, not authorship permissions.
+Review looks at correctness, readability, architecture, and performance. It uses the scope you name, or reviews current changes when you leave the scope open. With no changes, it reviews the whole available project. For example, it can point to a predicate that counts zero as positive, show the failing input, and suggest checking how the boundary value enters the count. Asking for a ready fix gives you a more specific hint. Choose an implementation mode explicitly when you want it to write the fix.
+
+Trace follows the behavior you name or starts with a compact project map and a clear main route. In the [order exercise](evaluation/fixtures/trace/README.md), it can follow `A7 2` from argument parsing in `cli.py`, through pricing in `orders.py`, to a stored order and a total of `300`. Ask to zoom in on any step. Trace checks important transitions locally when possible and says what the run observed. A walkthrough leaves the code and tests as they are. Trace applies a scoped repair when you ask for one and the session permits writes.
+
+All modes read relevant project files, run suitable available checks, and respond in your language. Hint and guide compare applicable approaches and adapt their explanations. Their fast variants give shorter, more direct help with the same authorship rules.
 
 ## Install
 
@@ -25,25 +31,27 @@ Install one skill from [Dest1n640/study-skills](https://github.com/Dest1n640/stu
 npx skills add Dest1n640/study-skills --agent codex --skill study-hint-normal --yes
 ```
 
-Install all four study skills for Codex:
+Install the full set for Codex once this revision is published:
 
 ```sh
 npx skills add Dest1n640/study-skills --agent codex \
-  --skill study-hint-normal study-hint-fast study-guide-normal study-guide-fast \
+  --skill study-hint-normal study-hint-fast study-guide-normal study-guide-fast study-review study-trace \
   --yes
 ```
 
 These commands use the [Skills CLI](https://github.com/vercel-labs/skills/blob/main/docs/commands.md#skills-add); `--yes` skips installer confirmation prompts. To install for Claude Code, replace `--agent codex` with `--agent claude-code`. To install a different single mode, replace `study-hint-normal` with its name from the table above.
 
-The shorter interactive alternative is `npx skills add Dest1n640/study-skills`: select your agent and only the four `study-*` names. This repository also contains `openspec-*` development helpers; do not select those for tutoring or use `--all` to install the product.
+The interactive alternative is `npx skills add Dest1n640/study-skills`. Choose your agent and the available `study-*` skills you want to use. Explicit selection keeps the `openspec-*` development helpers out of the tutoring install.
 
 For local installation from this checkout:
 
 ```sh
-npx skills add . --agent codex --skill study-hint-normal study-hint-fast study-guide-normal study-guide-fast
+npx skills add . --agent codex --skill study-review
+npx skills add . --agent codex --skill study-trace
+npx skills add . --agent codex --skill study-hint-normal study-hint-fast study-guide-normal study-guide-fast study-review study-trace
 ```
 
-The explicit four-skill selection was tested locally with Codex in an isolated project; remote installation remains untested. Restart or refresh skill discovery as required by your agent. See [results](evaluation/RESULTS.md) for a native hint-mode failure.
+See [evaluation results](evaluation/RESULTS.md) for local Codex installation and behavior checks. Remote installation of this revision remains unverified. Restart or refresh skill discovery as required by your agent.
 
 ## Use
 
@@ -54,9 +62,11 @@ $study-hint-normal Help me understand why my sliding window fails on repeated ch
 $study-guide-normal Explain the viable approaches. Then help me implement the parser part.
 $study-hint-fast I am stuck on the loop invariant. Give me a direct hint.
 $study-guide-fast Implement only the validation helper and explain the important decisions.
+$study-review Review my parser changes and give me hints for addressing the findings.
+$study-trace Follow the arguments A7 2 from the CLI through order submission.
 ```
 
-Claude Code uses slash invocations, for example `/study-hint-normal`. It has not been tested. Explicit-only selection is configured with `agents/openai.yaml` for Codex and `disable-model-invocation: true` for Claude Code. Other agents may interpret these extensions differently.
+Claude Code uses slash invocations, for example `/study-trace`. It has not been tested. Explicit-only selection is configured with `agents/openai.yaml` for Codex and `disable-model-invocation: true` for Claude Code. Other agents may interpret these extensions differently.
 
 Choose another study skill explicitly to change mode, or say that you are ending study mode.
 

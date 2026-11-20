@@ -1,0 +1,13 @@
+`python3 -B cli.py A7 2` напечатал `{'status': 201, 'id': 1, 'total': 300}`. Тест с подменой хранилища прошёл и подтвердил, что `run` возвращает тот же статус и сумму, а `id` берёт из результата `save`.
+
+### Путь `A7 2`
+
+1. Точка входа в `cli.py` передаёт `sys.argv[1:]` в `run`. На входе это `["A7", "2"]`. `argparse` оставляет `sku` строкой `"A7"` и преобразует `"2"` в целое число `2`. Затем `run` вызывает `submit_order("A7", 2, MemoryStore)`, используя фабрику хранилища по умолчанию. [cli.py](/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-trace-eval.mc8CS4Y7/workspaces/trace-explicit/cli.py:8)
+2. В `submit_order` проверка `2 < 0` ложна. Функция вычисляет `2 * 150 = 300`, создаёт хранилище через `store_factory()` и передаёт в `save` словарь `{"sku": "A7", "quantity": 2, "total": 300}`. [orders.py](/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-trace-eval.mc8CS4Y7/workspaces/trace-explicit/orders.py:4)
+3. `MemoryStore.save` добавляет заказ в пустой список и возвращает его длину `1`. `submit_order` помещает это значение в `id`, `run` возвращает готовый словарь, а точка входа печатает его. [storage.py](/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-trace-eval.mc8CS4Y7/workspaces/trace-explicit/storage.py:1) · [orders.py](/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-trace-eval.mc8CS4Y7/workspaces/trace-explicit/orders.py:10) · [cli.py](/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-trace-eval.mc8CS4Y7/workspaces/trace-explicit/cli.py:16)
+
+### Что подтвердил тест
+
+Запустил `python3 -B -m unittest -v test_trace.TraceTests.test_order_response_with_stub`. Тест напрямую вызывает `run(["A7", "2"], StubStore)` и сравнивает весь результат с `{"status": 201, "id": "test-order", "total": 300}`. `StubStore.save` всегда возвращает `"test-order"` и игнорирует переданный заказ, поэтому содержимое заказа прослеживается по исходнику. Печать и работу `MemoryStore` проверил отдельным запуском CLI. [test_trace.py](/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-trace-eval.mc8CS4Y7/workspaces/trace-explicit/test_trace.py:6)
+
+При запуске всего набора второй тест упал на `A7 0`. Он ожидает `422`, но условие `quantity < 0` пропускает ноль, и функция возвращает `201` с суммой `0`. Код и тесты оставил без изменений. [test_trace.py](/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-trace-eval.mc8CS4Y7/workspaces/trace-explicit/test_trace.py:16) · [orders.py](/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-trace-eval.mc8CS4Y7/workspaces/trace-explicit/orders.py:5)

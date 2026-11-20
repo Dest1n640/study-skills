@@ -2,12 +2,12 @@
 
 ## Purpose
 
-Provide four explicitly selected programming-learning modes with independent authorship and pace choices and predictable boundaries of assistance.
+Provide explicitly selected programming-learning modes for hints, guided implementation, educational review, and source tracing. Each mode defines its boundaries for assistance and authorship.
 
 ## Requirements
 
-### Requirement: Provide four manually selected modes
-The project SHALL provide study-hint-normal, study-hint-fast, study-guide-normal, and study-guide-fast as independent skills explicitly selected by the learner. The selected study preference SHALL continue until the learner explicitly selects another study mode or ends study mode.
+### Requirement: Provide manually selected study modes
+The project SHALL provide study-hint-normal, study-hint-fast, study-guide-normal, study-guide-fast, and study-trace as independent skills explicitly selected by the learner. The selected study preference SHALL continue until the learner explicitly selects another study mode or ends study mode.
 
 #### Scenario: The learner selects another mode
 - **WHEN** the learner explicitly selects another study skill
@@ -20,6 +20,26 @@ The project SHALL provide study-hint-normal, study-hint-fast, study-guide-normal
 #### Scenario: The learner ends study mode
 - **WHEN** the learner explicitly ends study mode
 - **THEN** the selected tutoring preference no longer governs later requests and the assistant follows the remaining applicable instructions
+
+#### Scenario: The learner wants to inspect code while hint remains selected
+- **WHEN** the learner asks to trace code without explicitly selecting study-trace
+- **THEN** the current hint boundaries continue to govern the response
+
+#### Scenario: The learner explicitly selects trace in a protected hint session
+- **WHEN** the learner explicitly selects study-trace from a read-only hint session
+- **THEN** trace is the selected study mode and the client session remains read-only
+
+### Requirement: Provide a manually selected educational review mode
+
+The project SHALL provide `study-review` as an independently installable mode explicitly selected by the learner. The review preference SHALL remain in effect until the learner explicitly selects another study mode or ends study mode. A request for a ready fix SHALL keep the current selection in effect. Any edit after an explicit mode switch remains subject to the new mode and client permissions.
+
+#### Scenario: A learner explicitly chooses review
+- **WHEN** a learner explicitly selects study-review during a different study mode
+- **THEN** review becomes the active study preference and uses its own authorship boundary
+
+#### Scenario: A learner explicitly chooses an implementation mode
+- **WHEN** a learner explicitly switches from study-review to a study mode that permits the requested edit
+- **THEN** the new mode governs the request and existing client permissions still govern edits
 
 ### Requirement: Preserve learner authorship in hint
 Hint modes SHALL leave assignment source code, submitted implementation, and tests to the learner and SHALL give guidance instead of patches or completed target-code fragments. An implementation request within an explicitly selected hint mode SHALL be interpreted as a request for guidance unless the learner explicitly selects guide or ends study mode. Other coding workflows SHALL preserve that authorship boundary.

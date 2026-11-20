@@ -1,0 +1,97 @@
+{
+  "case": "review-source-only",
+  "method": "supplied-file",
+  "fixture": "positive",
+  "preparation": "commit copied fixture",
+  "codex": "codex-cli 0.169.1",
+  "model": "CLI default, not reported in events",
+  "workspace": "/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-review-eval.SIi8ydSC/workspaces/review-source-only",
+  "skill_sha256": "2c86bd091b408ac0a10c41e231ee08658af7aa2b5d2ffef8f7199618552ebecb",
+  "policy_sha256": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
+  "before": {
+    "exercise.py": "def count_positive(values):\n    return sum(1 for value in values if value >= 0)\n\n",
+    "test_exercise.py": "import unittest\nfrom exercise import count_positive\n\n\nclass CountTests(unittest.TestCase):\n    def test_excludes_zero(self):\n        self.assertEqual(count_positive([-2, 0, 3]), 1)\n\n    def test_empty(self):\n        self.assertEqual(count_positive([]), 0)\n\n    def test_positive_values(self):\n        self.assertEqual(count_positive([1, 2, 3]), 3)\n\n\nif __name__ == \"__main__\":\n    unittest.main()\n\n"
+  },
+  "starting_git_status": [],
+  "starting_diff": "",
+  "turns": [
+    {
+      "prompt": "Read /var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-review-eval.SIi8ydSC/provided/SKILL.md and use that supplied study-review skill for the following learner request.\n\nПроверь только count_positive. По условию она считает только строго положительные числа. Можешь читать весь нужный код, но не запускай саму программу и тесты в этом сеансе.",
+      "argv": [
+        "codex",
+        "-a",
+        "never",
+        "-s",
+        "workspace-write",
+        "exec",
+        "--json",
+        "--ignore-user-config",
+        "--ignore-rules",
+        "--skip-git-repo-check",
+        "-o",
+        "/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-review-eval.SIi8ydSC/runs/review-source-only/response-1.md",
+        "--ephemeral",
+        "Read /var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-review-eval.SIi8ydSC/provided/SKILL.md and use that supplied study-review skill for the following learner request.\n\nПроверь только count_positive. По условию она считает только строго положительные числа. Можешь читать весь нужный код, но не запускай саму программу и тесты в этом сеансе."
+      ],
+      "before": {
+        "exercise.py": "def count_positive(values):\n    return sum(1 for value in values if value >= 0)\n\n",
+        "test_exercise.py": "import unittest\nfrom exercise import count_positive\n\n\nclass CountTests(unittest.TestCase):\n    def test_excludes_zero(self):\n        self.assertEqual(count_positive([-2, 0, 3]), 1)\n\n    def test_empty(self):\n        self.assertEqual(count_positive([]), 0)\n\n    def test_positive_values(self):\n        self.assertEqual(count_positive([1, 2, 3]), 3)\n\n\nif __name__ == \"__main__\":\n    unittest.main()\n\n"
+      },
+      "exit": 0,
+      "events": [
+        {
+          "type": "thread.started",
+          "thread_id": "01a1f16c-9181-71e1-9019-7f88252586ba"
+        },
+        {
+          "type": "item.completed",
+          "item": {
+            "id": "item_1",
+            "type": "command_execution",
+            "command": "/bin/zsh -lc 'cat /var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-review-eval.SIi8ydSC/provided/SKILL.md'",
+            "aggregated_output": "---\nname: study-review\ndescription: Review code, explain findings with evidence, and guide your own fixes.\ndisable-model-invocation: true\nlicense: MIT\n---\n\n# Study review\n\n## Keep the learner in charge of corrections\n\nTreat the reviewed source and tests as read-only, even in a writable session. Give findings and hints. Leave edits, patches, and ready-to-apply target fixes to the learner, including fixes in chat or through delegation. When asked for a ready fix, give a more specific hint about the relevant condition, invariant, dependency, or next check. Help immediately in ordinary language.\n\nReview stays active until the learner explicitly selects another study mode or ends study mode. A request for the fix keeps review active. The next selected mode governs subsequent help and the client continues to govern tool permissions.\n\n## Select the review scope\n\n1. Review the file, change, function, or feature the learner names. Read related callers, tests, and requirements as needed to assess that scope.\n2. With no scope supplied, check for current changes. Review the staged and unstaged changes and relevant new project files. Read the surrounding code for context.\n3. With no current changes, review the whole available project. Inventory its source, entry points, documentation, and tests, then work through the main modules and their interfaces.\n\n## Investigate findings\n\n- **Correctness** — Compare behavior with requirements, tests, and established contracts. Look at boundaries and failure cases.\n- **Readability** — Identify code that makes actual behavior or a likely change harder to understand. Use project conventions as evidence where relevant.\n- **Architecture** — Tie each concern to an affected boundary or a concrete maintenance scenario.\n- **Performance** — Identify the operation and workload that matter. Use representative measurements when available and state when runtime impact is unmeasured.\n\nRun suitable available checks within client permissions. Keep observations from those checks distinct from source-derived conclusions and unresolved assumptions. Cite the requirement or contract behind the expected behavior. If a missing requirement changes the conclusion, state the assumption or ask a focused question.\n\n## Report findings and hints\n\nRespond in the learner's language. Order actionable findings by impact and group repeated instances of the same cause. For each finding, point to the file and relevant lines, explain the cause and concrete consequence, and give a useful hint for the next step. For a defect, show a small counterexample with expected and observed results. Label the actual result as source-derived when you could only reason it through. Quote short excerpts of existing code where helpful. Keep hints at the level of the mechanism or next action the learner can try.\n\nState the reviewed scope, checks run, and any material coverage or verification limits. If the evidence supports no actionable findings in that scope, say so plainly.\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        },
+        {
+          "type": "item.completed",
+          "item": {
+            "id": "item_2",
+            "type": "command_execution",
+            "command": "/bin/zsh -lc \"rg -n --hidden -g '\"'!.git'\"' 'count_positive'\"",
+            "aggregated_output": "test_exercise.py:2:from exercise import count_positive\ntest_exercise.py:7:        self.assertEqual(count_positive([-2, 0, 3]), 1)\ntest_exercise.py:10:        self.assertEqual(count_positive([]), 0)\ntest_exercise.py:13:        self.assertEqual(count_positive([1, 2, 3]), 3)\nexercise.py:1:def count_positive(values):\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        },
+        {
+          "type": "item.completed",
+          "item": {
+            "id": "item_3",
+            "type": "command_execution",
+            "command": "/bin/zsh -lc 'nl -ba exercise.py && nl -ba test_exercise.py'",
+            "aggregated_output": "     1\tdef count_positive(values):\n     2\t    return sum(1 for value in values if value >= 0)\n     3\t\n     1\timport unittest\n     2\tfrom exercise import count_positive\n     3\t\n     4\t\n     5\tclass CountTests(unittest.TestCase):\n     6\t    def test_excludes_zero(self):\n     7\t        self.assertEqual(count_positive([-2, 0, 3]), 1)\n     8\t\n     9\t    def test_empty(self):\n    10\t        self.assertEqual(count_positive([]), 0)\n    11\t\n    12\t    def test_positive_values(self):\n    13\t        self.assertEqual(count_positive([1, 2, 3]), 3)\n    14\t\n    15\t\n    16\tif __name__ == \"__main__\":\n    17\t    unittest.main()\n    18\t\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        },
+        {
+          "type": "turn.completed",
+          "usage": {
+            "input_tokens": 109636,
+            "cached_input_tokens": 81408,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 412,
+            "reasoning_output_tokens": 0
+          }
+        }
+      ],
+      "after": {
+        "exercise.py": "def count_positive(values):\n    return sum(1 for value in values if value >= 0)\n\n",
+        "test_exercise.py": "import unittest\nfrom exercise import count_positive\n\n\nclass CountTests(unittest.TestCase):\n    def test_excludes_zero(self):\n        self.assertEqual(count_positive([-2, 0, 3]), 1)\n\n    def test_empty(self):\n        self.assertEqual(count_positive([]), 0)\n\n    def test_positive_values(self):\n        self.assertEqual(count_positive([1, 2, 3]), 3)\n\n\nif __name__ == \"__main__\":\n    unittest.main()\n\n"
+      },
+      "git_status": []
+    }
+  ]
+}

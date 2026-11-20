@@ -1,0 +1,88 @@
+{
+  "install-one": {
+    "skills": [
+      "study-review"
+    ],
+    "sha256": {
+      "study-review": {
+        "SKILL.md": "2c86bd091b408ac0a10c41e231ee08658af7aa2b5d2ffef8f7199618552ebecb",
+        "agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
+        "LICENSE": "26ba4e26a8dbfb73cd05f6aff6da3843fae8b5d17eac9d92bf5fe118e2f69a6c"
+      }
+    },
+    "exit": 0,
+    "argv": [
+      "npx",
+      "--cache",
+      "/private/tmp/study-skills-npm-cache",
+      "--yes",
+      "skills@1.9.0",
+      "add",
+      "/Users/dest1n/Projects/study-skills",
+      "--agent",
+      "codex",
+      "--skill",
+      "study-review",
+      "--copy",
+      "--yes"
+    ]
+  },
+  "install-all": {
+    "skills": [
+      "study-guide-fast",
+      "study-guide-normal",
+      "study-hint-fast",
+      "study-hint-normal",
+      "study-review"
+    ],
+    "sha256": {
+      "study-guide-fast": {
+        "SKILL.md": "e3a9267fe24ff517cdce601b6c950da478cebbbc86f6eb2af5940f7ec0f88364",
+        "agents/openai.yaml": "0c1820e22ff855c1603935c6f3adb3d472f27949383355c7744a7c6c438dab5a",
+        "LICENSE": "26ba4e26a8dbfb73cd05f6aff6da3843fae8b5d17eac9d92bf5fe118e2f69a6c"
+      },
+      "study-guide-normal": {
+        "SKILL.md": "ed1b84ce154e41db22b07cc63154e5f45ac020f895ee0ca3dcba57084fced715",
+        "agents/openai.yaml": "0c1820e22ff855c1603935c6f3adb3d472f27949383355c7744a7c6c438dab5a",
+        "LICENSE": "26ba4e26a8dbfb73cd05f6aff6da3843fae8b5d17eac9d92bf5fe118e2f69a6c"
+      },
+      "study-hint-fast": {
+        "SKILL.md": "bf90438739457f692010068bcf5e787a9a91854056316b6f55ffab099074c73e",
+        "agents/openai.yaml": "0c1820e22ff855c1603935c6f3adb3d472f27949383355c7744a7c6c438dab5a",
+        "LICENSE": "26ba4e26a8dbfb73cd05f6aff6da3843fae8b5d17eac9d92bf5fe118e2f69a6c"
+      },
+      "study-hint-normal": {
+        "SKILL.md": "0f6eff85068d43dfdcd8d9e3f1183d3eb5c00d388cf7f3f788166d2c2e89e653",
+        "agents/openai.yaml": "0c1820e22ff855c1603935c6f3adb3d472f27949383355c7744a7c6c438dab5a",
+        "LICENSE": "26ba4e26a8dbfb73cd05f6aff6da3843fae8b5d17eac9d92bf5fe118e2f69a6c"
+      },
+      "study-review": {
+        "SKILL.md": "2c86bd091b408ac0a10c41e231ee08658af7aa2b5d2ffef8f7199618552ebecb",
+        "agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
+        "LICENSE": "26ba4e26a8dbfb73cd05f6aff6da3843fae8b5d17eac9d92bf5fe118e2f69a6c"
+      }
+    },
+    "exit": 0,
+    "argv": [
+      "npx",
+      "--cache",
+      "/private/tmp/study-skills-npm-cache",
+      "--yes",
+      "skills@1.9.0",
+      "add",
+      "/Users/dest1n/Projects/study-skills",
+      "--agent",
+      "codex",
+      "--skill",
+      "study-hint-normal",
+      "study-hint-fast",
+      "study-guide-normal",
+      "study-guide-fast",
+      "study-review",
+      "--copy",
+      "--yes"
+    ]
+  },
+  "skills_cli": "1.9.0",
+  "node": "v26.7.0"
+}

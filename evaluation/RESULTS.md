@@ -47,3 +47,19 @@ A separate read-only runtime probe preserved the fixture and gave guidance. It i
 ## Approved permission-bound hint workflow
 
 The user approved client read-only plus never approvals for hint; guide editing requires resuming with workspace-write/on-request and explicitly selecting guide. Final [normal](runs/2026-11-18-hint-regression/final-study-hint-normal/review.md) and [fast](runs/2026-11-18-hint-regression/final-study-hint-fast/review.md) checks loaded the final skills and preserved source/tests. This resolves the scoped file-protection task through client permissions, not by claiming the failed prompt revision repaired model behavior. The replies still quote internal instructions; the full interactive resume sequence and chat-output enforcement are not verified. Historical failures are retained.
+
+## Study review checks on 19 November 2026
+
+- **Metadata passed.** The skill name matches the folder, the description and frontmatter parse, both client policies specify explicit invocation, and the MIT license copy matches the root license. [Tested skill](runs/2026-11-19-study-review/skill.md) · [Codex policy](runs/2026-11-19-study-review/policy.yaml)
+- **Local installation passed.** Separate Codex projects received either review alone or exactly the five product skills. The checks compared the installed skill, policy, and license bytes with the checkout. [Installation record](runs/2026-11-19-study-review/installation.json)
+- **Supplied-file behavior passed in five cases.** Review honored an explicit scope, examined a current diff and a clean project, explained a readability issue, and distinguished source reasoning from a run. [Case evidence](runs/2026-11-19-study-review/README.md)
+- **Native behavior passed for review alone and for a writable review-to-guide sequence.** The session record confirmed explicit skill injection. Review left implementation and tests unchanged across both requests for a ready fix. The explicit guide selection changed only the target comparison and passed all three tests. [Individual run](runs/2026-11-19-study-review/native-one/run.json) · [Switch run](runs/2026-11-19-study-review/native/run.json)
+- **Publication and other clients.** This review revision was evaluated from the local checkout. GitHub publication and remote installation were not verified. Claude Code and other clients were not run, and the checks do not measure learning outcomes.
+
+## Study trace checks on 19 November 2026
+
+- **Metadata passed.** The core validator passed with the Claude-specific extension omitted from its temporary input. The shipping skill retains that extension. Both client settings were parsed, and the MIT license matches the root license. [Tested skill](runs/2026-11-19-study-trace/skill.md) · [Codex policy](runs/2026-11-19-study-trace/policy.yaml)
+- **Local installation passed.** Trace alone and the full six-skill selection installed in isolated Codex projects. The full selection excluded OpenSpec helpers. [Installation record](runs/2026-11-19-study-trace/installation.json)
+- **Supplied-file behavior passed.** The tutor offered a choice between comparable routes, traced a named input and expanded the storage step, and changed only the quantity condition after a direct repair request. [Case results](runs/2026-11-19-study-trace/README.md)
+- **Native behavior passed.** The isolated trace installation started with a project map and a diagram. In the full installation, the client recorded no skill injection for the plain request and injected hint and trace only on their explicit turns. The read-only session preserved all files through the requested repair. [Individual run](runs/2026-11-19-study-trace/trace-main/run.json) · [Switch run](runs/2026-11-19-study-trace/trace-hint-switch/run.json)
+- **Publication and other clients.** These checks used the local checkout. GitHub publication, remote installation, other-client behavior, and learning outcomes remain unverified.

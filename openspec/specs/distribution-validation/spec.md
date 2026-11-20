@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Package the four skills for explicit use across supporting agents while accurately describing installation, compatibility, evaluation evidence, and publication status.
+Package the product study skills for explicit use across supporting agents while accurately describing installation, compatibility, evaluation evidence, and publication status.
 
 ## Requirements
 
@@ -25,15 +25,23 @@ The project SHALL provide Russian and English public descriptions, learner-langu
 - **THEN** disable-model-invocation is true and documentation distinguishes slash invocation without claiming a tested Claude session
 
 ### Requirement: Reuse an existing installation route
-Installation documentation SHALL use the existing Skills CLI route and SHALL label unpublished repository placeholders and untested instructions accurately. The recommended product installation SHALL select only the four study skills, without installing repository-development helpers.
+Installation documentation SHALL use the existing Skills CLI route and SHALL label unpublished repository placeholders and untested instructions accurately. It SHALL document individual product skill selection, including study-review and study-trace. The recommended full product installation SHALL explicitly select the product study skills available in the documented revision, including study-review and study-trace, and exclude repository-development helpers.
 
 #### Scenario: The repository is unpublished
 - **WHEN** documentation shows npx skills add OWNER/REPO
 - **THEN** it identifies OWNER/REPO as a placeholder rather than a working published project address
 
 #### Scenario: Development skills are present in the source repository
-- **WHEN** a learner follows the recommended product installation for a selected client
-- **THEN** the installed project skill set contains the four study modes and does not include openspec-* development helpers
+- **WHEN** a learner follows the recommended full product installation for a selected client
+- **THEN** the installed project skill set contains the product study skills available in that revision and excludes openspec-* development helpers
+
+#### Scenario: A learner installs review on its own
+- **WHEN** the learner uses the documented individual skill selection for study-review
+- **THEN** the selection includes study-review without requiring another study skill
+
+#### Scenario: A learner installs trace on its own
+- **WHEN** the learner uses the documented individual skill selection for study-trace
+- **THEN** the selection includes study-trace without requiring any sibling study skill
 
 ### Requirement: Report only the evidence actually checked
 Evaluation reports SHALL distinguish metadata validation, direct-instruction Codex smoke tests, native discovery, installation, other-client behavior, and learning effectiveness.

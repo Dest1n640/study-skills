@@ -30,7 +30,18 @@ python3 -B -m unittest -v
 
 After only a parser request, ParseTests should pass and SummaryTests should still be unimplemented. After the separate summarizer request, the full suite should pass. Preserve the unrelated title helper and initial tests.
 
+## Review case setup
+
+- For `commit-fixture`, initialize Git in the isolated workspace and commit only the copied fixture files. The clean starting worktree drives the whole-project case. Install native skills after this step and locally exclude `.agents/` and `skills-lock.json` from the fixture diff.
+- For `positive-worktree-regression`, start with the `positive` fixture, replace `value >= 0` with `value > 0` in `exercise.py`, initialize Git, and commit the implementation and tests. Restore `exercise.py` from the original fixture as an unstaged change. Check that it is the only changed fixture file before starting Codex.
+- In `review/`, `python3 -B -m unittest -v` passes the count check, fails the zero case, and errors when publishing uses a field absent from the test store. The repeated scan and the eligibility predicate also support source-based performance and readability findings.
+- For a native `review-lifecycle` run, prefix the first case prompt with `$study-review`. Resume by its reported session ID in a writable sandbox for the remaining prompts. The final prompt already contains the explicit selection. Save each turn's output and snapshots before the next turn.
+
 ## Native invocation is a separate check
+
+For trace, use the order CLI project or the two independent commands in `trace-choice/`. The order project's starting suite has one passing test with a substitute store and one failing test for zero quantity. After the requested writable repair, verify that the only source change is the quantity condition and both tests pass. For a supplied-file case with follow-up, resume the same session and keep the original skill active.
+
+For `trace-main`, install trace alone and explicitly invoke it in Codex. For `trace-hint-switch`, start a fresh `read-only` session with approvals disabled and the full set installed. Send the first turn as plain text. On subsequent turns prefix the prompt with the dollar-name in the case's `select` field and resume in the same read-only session. Check client injection evidence, the session settings, and before and after source snapshots.
 
 See NATIVE-CODEX.md. Reading a SKILL.md directly is not evidence that installation, discovery, explicit-only policy, or dollar-name invocation works. No Claude Code test is required for this initial pass.
 

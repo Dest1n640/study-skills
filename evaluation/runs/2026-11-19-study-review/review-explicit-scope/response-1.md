@@ -1,0 +1,3 @@
+Проверил только [`order_count` в `report.py`](/private/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-review-eval.SIi8ydSC/workspaces/review-explicit-scope/report.py:12). Замечаний нет. `len(rows)` возвращает число строк в готовом отчёте, как требует условие.
+
+Целевой тест прошёл для пустого отчёта и отчёта из одной строки. Дополнительно проверил две строки с одинаковым `id` — функция вернула `2`.

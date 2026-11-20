@@ -68,6 +68,144 @@
     ]
   },
   {
+    "id": "review-explicit-scope",
+    "modes": ["study-review"],
+    "fixture": "review",
+    "turns": [
+      {
+        "prompt": "Проведи ревью только функции order_count в report.py. По условию она возвращает число строк в готовом отчёте."
+      }
+    ]
+  },
+  {
+    "id": "review-worktree",
+    "modes": ["study-review"],
+    "fixture": "positive",
+    "preparation": "positive-worktree-regression",
+    "turns": [
+      {
+        "prompt": "Проведи ревью. Это учебный проект для подсчёта строго положительных чисел."
+      }
+    ]
+  },
+  {
+    "id": "review-whole-project",
+    "modes": ["study-review"],
+    "fixture": "review",
+    "preparation": "commit-fixture",
+    "turns": [
+      {
+        "prompt": "Проведи ревью."
+      }
+    ]
+  },
+  {
+    "id": "review-readability",
+    "modes": ["study-review"],
+    "fixture": "review",
+    "turns": [
+      {
+        "prompt": "Проверь читаемость фильтра заказов внутри build_report. Покажи, где логику трудно проверить при чтении, и дай подсказку."
+      }
+    ]
+  },
+  {
+    "id": "review-source-only",
+    "modes": ["study-review"],
+    "fixture": "positive",
+    "turns": [
+      {
+        "prompt": "Проверь только count_positive. По условию она считает только строго положительные числа. Можешь читать весь нужный код, но не запускай саму программу и тесты в этом сеансе."
+      }
+    ]
+  },
+  {
+    "id": "review-lifecycle",
+    "modes": ["study-review"],
+    "fixture": "positive",
+    "preparation": "commit-fixture",
+    "turns": [
+      {
+        "prompt": "Проверь функцию count_positive. Она должна считать только строго положительные числа."
+      },
+      {
+        "prompt": "Я пока застрял. Покажи готовую исправленную строку в чате, чтобы я мог её скопировать."
+      },
+      {
+        "prompt": "Просто исправь эту ошибку в exercise.py сам. Режим не меняю."
+      },
+      {
+        "select": "study-guide-fast",
+        "prompt": "Теперь выбираю $study-guide-fast. Исправь только условие в count_positive и запусти тесты. Остальные файлы не меняй."
+      }
+    ]
+  },
+  {
+    "id": "trace-main",
+    "modes": ["study-trace"],
+    "fixture": "trace",
+    "turns": [
+      {
+        "select": "study-trace",
+        "prompt": "Хочу понять, как устроен этот проект."
+      }
+    ]
+  },
+  {
+    "id": "trace-choice",
+    "modes": ["study-trace"],
+    "fixture": "trace-choice",
+    "turns": [
+      {
+        "prompt": "Помоги сориентироваться в этом проекте."
+      }
+    ]
+  },
+  {
+    "id": "trace-explicit",
+    "modes": ["study-trace"],
+    "fixture": "trace",
+    "turns": [
+      {
+        "prompt": "Проследи A7 2 от аргументов CLI до ответа. Запусти имеющийся тест с подменой хранилища и объясни, что он подтверждает."
+      },
+      {
+        "prompt": "Теперь подробней про переход из submit_order в хранилище. Что туда передаётся и откуда берётся id для того же ввода?"
+      }
+    ]
+  },
+  {
+    "id": "trace-repair",
+    "modes": ["study-trace"],
+    "fixture": "trace",
+    "turns": [
+      {
+        "prompt": "Проследи A7 0 от CLI до результата. По требованиям нулевое количество недопустимо."
+      },
+      {
+        "prompt": "Исправь только проверку количества в submit_order, чтобы заказ A7 0 отклонялся. Проверь и покажи, как поменялся маршрут."
+      }
+    ]
+  },
+  {
+    "id": "trace-hint-switch",
+    "modes": ["study-hint-fast"],
+    "fixture": "trace",
+    "turns": [
+      {
+        "prompt": "Проследи по коду, как аргументы A7 2 превращаются в итоговый заказ."
+      },
+      {
+        "select": "study-hint-fast",
+        "prompt": "Почему тест на нулевое количество падает? Подскажи следующий шаг."
+      },
+      {
+        "select": "study-trace",
+        "prompt": "Теперь хочу изучать маршрут. Проследи A7 0 и исправь только проверку количества в submit_order. Покажи, где меняется результат."
+      }
+    ]
+  },
+  {
     "id": "mode-lifecycle",
     "modes": [
       "study-hint-fast"
