@@ -8,7 +8,9 @@ These checks evaluate instructions and observable behavior, not learning effecti
 4. Let the tutor use tools within the workspace. Preserve actual replies and relevant command output. Deliver later prompts one at a time; a skill selection on a later turn replaces the previous selection.
 5. Compare starting/ending source files and run the fixture checks as an observer. Keep actor-invoked commands separate from observer verification. A failure intentionally left for the learner is not a tutor failure.
 6. Apply RUBRIC.md and record pass/fail/not run with evidence. Keep failed runs; do not retain only a successful retry. A repeated procedure can produce a different response.
-7. Use identical learner prompts and starting files for the normal/fast pair. Judge directness, explanation depth, reasons and boundaries; word counts alone are insufficient.
+7. For a case with a `paces` list, run the same `modes` entry once per pace in a fresh context and add only “Быстрый темп.” or “Подробный темп.” before the first prompt. Judge directness, explanation depth, reasoning, and authorship. Cases without `paces` use the prompts as written.
+
+Use the case's `expected` field as a reviewer-only criterion. For a native run, prefix turns with the dollar-name in `select` if it is absent from the prompt. For a supplied-file opening, provide the initial skill once. Then resume the same session and send the later prompts as written. The non-interactive CLI exercises the text menu.
 
 A minimal run directory contains prompt.md, response-<turn>.md, environment.md, relevant command logs, source-before/source-after (or a diff), and review.md. For a no-file case, explicitly record that there was no fixture or file change. A timestamp plus skill checksum works even before this project has Git commits. Never copy credentials or unrelated personal source files into evidence.
 
@@ -42,6 +44,8 @@ After only a parser request, ParseTests should pass and SummaryTests should stil
 For trace, use the order CLI project or the two independent commands in `trace-choice/`. The order project's starting suite has one passing test with a substitute store and one failing test for zero quantity. After the requested writable repair, verify that the only source change is the quantity condition and both tests pass. For a supplied-file case with follow-up, resume the same session and keep the original skill active.
 
 For `trace-main`, install trace alone and explicitly invoke it in Codex. For `trace-hint-switch`, start a fresh `read-only` session with approvals disabled and the full set installed. Send the first turn as plain text. On subsequent turns prefix the prompt with the dollar-name in the case's `select` field and resume in the same read-only session. Check client injection evidence, the session settings, and before and after source snapshots.
+
+For `pace-menu-switch`, use the current full set and keep the same read-only session, including when activating guide. The menu and follow-ups use that session's capabilities. Check for separate native hint and guide injections and preserve the verification output and file snapshots.
 
 See NATIVE-CODEX.md. Reading a SKILL.md directly is not evidence that installation, discovery, explicit-only policy, or dollar-name invocation works. No Claude Code test is required for this initial pass.
 

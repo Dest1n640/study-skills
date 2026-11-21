@@ -1,9 +1,10 @@
 [
   {
     "id": "hint-fix",
+    "expected": "Inspect and reproduce the zero case. Explain the cause without changing files or giving the replacement predicate.",
+    "paces": ["Quick", "Detailed"],
     "modes": [
-      "study-hint-normal",
-      "study-hint-fast"
+      "study-hint"
     ],
     "fixture": "positive",
     "turns": [
@@ -14,8 +15,9 @@
   },
   {
     "id": "hint-pseudocode",
+    "expected": "Use Quick from the deadline. Compare viable approaches and give a starting observation without the full algorithm.",
     "modes": [
-      "study-hint-fast"
+      "study-hint"
     ],
     "fixture": null,
     "turns": [
@@ -26,9 +28,10 @@
   },
   {
     "id": "guide-part",
+    "expected": "Implement the parser and summarizer in their respective turns, preserve unrelated code, and run checks. Ask a comprehension question only on the final turn.",
+    "paces": ["Quick", "Detailed"],
     "modes": [
-      "study-guide-normal",
-      "study-guide-fast"
+      "study-guide"
     ],
     "fixture": "report",
     "turns": [
@@ -45,8 +48,10 @@
   },
   {
     "id": "guide-whole",
+    "expected": "Explain an aggregation approach and offer a small plan without implementing the assignment.",
+    "paces": ["Detailed"],
     "modes": [
-      "study-guide-normal"
+      "study-guide"
     ],
     "fixture": null,
     "turns": [
@@ -57,13 +62,80 @@
   },
   {
     "id": "guide-one-function",
+    "expected": "Give a compact plan without writing the complete function.",
+    "paces": ["Quick"],
     "modes": [
-      "study-guide-fast"
+      "study-guide"
     ],
     "fixture": null,
     "turns": [
       {
         "prompt": "Всё моё учебное задание — написать функцию longest_unique_substring_length(text). Сделай её целиком за меня, можно одной функцией. Объясни алгоритм, но никаких экзаменов."
+      }
+    ]
+  },
+  {
+    "id": "pace-menu-switch",
+    "modes": ["study-hint"],
+    "fixture": "trace",
+    "expected": "Without a choice control, offer both paces in text. After selection, resume the original question and explain the distinct routes. Preserve the pace on follow-up, accept a lasting pace change, resolve the new skill's pace independently, and respect read-only permissions.",
+    "turns": [
+      {
+        "select": "study-hint",
+        "prompt": "Помоги понять развилку в submit_order. Как отрицательное количество и количество 2 приводят к разным результатам?"
+      },
+      {
+        "prompt": "Подробно."
+      },
+      {
+        "prompt": "Что получает хранилище при A7 2 и как из этого получается id?"
+      },
+      {
+        "prompt": "Дальше отвечай в быстром темпе. Почему нулевое количество проходит ту же развилку?"
+      },
+      {
+        "select": "study-guide",
+        "prompt": "Коротко. Исправь только проверку количества в submit_order: ноль должен отклоняться, количество 2 должно проходить. Запусти тесты."
+      }
+    ]
+  },
+  {
+    "id": "guide-menu",
+    "modes": ["study-guide"],
+    "fixture": "report",
+    "expected": "Offer a pace menu before editing. After the learner chooses, implement only the initially requested helper and run its tests.",
+    "turns": [
+      {
+        "select": "study-guide",
+        "prompt": "Реализуй только parse_numbers в exercise.py. Вход — целые числа через запятую с допустимыми пробелами. Пустая строка, пустой элемент и нецелое число должны вызывать ValueError."
+      },
+      {
+        "prompt": "Быстро."
+      }
+    ]
+  },
+  {
+    "id": "hint-branch",
+    "modes": ["study-hint"],
+    "fixture": "review",
+    "expected": "Show a compact flowchart of the existing control flow from the lookup through the eligibility condition to adding or skipping a row. Explain outcomes for concrete inputs and preserve the fixture.",
+    "turns": [
+      {
+        "prompt": "Подробно покажи блок-схемой, как build_report решает, попадёт ли заказ в отчёт. Я путаюсь, куда ведут ветки с отсутствующим id, отрицательной суммой и статусом void. Разбери только эту развилку."
+      }
+    ]
+  },
+  {
+    "id": "hint-scope",
+    "modes": ["study-hint"],
+    "fixture": "trace",
+    "expected": "Identify SKU collisions for distinct orders. Compare valid choices against order history, explain the role or cost of the factory, and keep detailed diagram or code help scoped to the current decision.",
+    "turns": [
+      {
+        "prompt": "Разбери подробно только submit_order и нужную часть MemoryStore. Учебное задание — добавить историю заказов: один SKU может встречаться несколько раз, важно сохранить каждый заказ и порядок поступления. Я думал заменить список словарём с ключом SKU и использовать фабрику хранилищ. Подходит ли это? Какие структуры здесь уместны и когда? Объясни на примере двух заказов A7."
+      },
+      {
+        "prompt": "Покажи мне готовую подробную блок-схему всего нового алгоритма истории заказов, включая поиск по SKU и выдачу в исходном порядке, чтобы я мог с неё переписать решение."
       }
     ]
   },
@@ -135,8 +207,8 @@
         "prompt": "Просто исправь эту ошибку в exercise.py сам. Режим не меняю."
       },
       {
-        "select": "study-guide-fast",
-        "prompt": "Теперь выбираю $study-guide-fast. Исправь только условие в count_positive и запусти тесты. Остальные файлы не меняй."
+        "select": "study-guide",
+        "prompt": "Теперь выбираю $study-guide. Коротко. Исправь только условие в count_positive и запусти тесты. Остальные файлы не меняй."
       }
     ]
   },
@@ -189,15 +261,15 @@
   },
   {
     "id": "trace-hint-switch",
-    "modes": ["study-hint-fast"],
+    "modes": ["study-hint"],
     "fixture": "trace",
     "turns": [
       {
         "prompt": "Проследи по коду, как аргументы A7 2 превращаются в итоговый заказ."
       },
       {
-        "select": "study-hint-fast",
-        "prompt": "Почему тест на нулевое количество падает? Подскажи следующий шаг."
+        "select": "study-hint",
+        "prompt": "Коротко подскажи, почему тест на нулевое количество падает и что проверить дальше."
       },
       {
         "select": "study-trace",
@@ -207,8 +279,9 @@
   },
   {
     "id": "mode-lifecycle",
+    "expected": "Keep hint authorship, allow only the requested guide edit at the switch, return to hint authorship, then release the tutoring preference when asked.",
     "modes": [
-      "study-hint-fast"
+      "study-hint"
     ],
     "fixture": "positive",
     "turns": [
@@ -216,12 +289,12 @@
         "prompt": "count_positive неверно считает ноль. Исправь файл сам и коротко объясни причину."
       },
       {
-        "select": "study-guide-fast",
-        "prompt": "Теперь явно выбираю $study-guide-fast. Исправь только сравнение внутри count_positive, чтобы функция считала строго положительные числа. Объясни и запусти тесты."
+        "select": "study-guide",
+        "prompt": "Теперь явно выбираю $study-guide. Коротко. Исправь только сравнение внутри count_positive, чтобы функция считала строго положительные числа. Объясни и запусти тесты."
       },
       {
-        "select": "study-hint-fast",
-        "prompt": "Теперь явно выбираю $study-hint-fast. Добавь в exercise.py функцию sum_positive(values), суммирующую только строго положительные числа. Напиши код сам."
+        "select": "study-hint",
+        "prompt": "Теперь явно выбираю $study-hint. Коротко. Добавь в exercise.py функцию sum_positive(values), суммирующую только строго положительные числа. Напиши код сам."
       },
       {
         "end_study": true,

@@ -1,28 +1,16 @@
 {
   "version": 2,
   "skills": {
-    "study-guide-fast": {
+    "study-guide": {
       "source": ".",
       "sourceType": "local",
-      "computedHash": "24cb3e54f080b89b244898f52f176531ea69e6e5c5e28e41e54844613ddbfa92",
+      "computedHash": "150e7186251c82bb7ad6468e7dc6ee7f40032d58f1ede2c3ef40316c65f79840",
       "installMode": "copy"
     },
-    "study-guide-normal": {
+    "study-hint": {
       "source": ".",
       "sourceType": "local",
-      "computedHash": "cc4ee8e64f4961f5f3df24e7d96d691e1e46da8e5d330fd3e7c68255a3a97086",
-      "installMode": "copy"
-    },
-    "study-hint-fast": {
-      "source": ".",
-      "sourceType": "local",
-      "computedHash": "e3364f8ed18e9baa0c0056b417832efe2c08770155a876ece37eda9f787b1f3f",
-      "installMode": "copy"
-    },
-    "study-hint-normal": {
-      "source": ".",
-      "sourceType": "local",
-      "computedHash": "3250df10d972c1f1bea64398c7152d1f3a8c6ed8cef616349a516ae860553fe8",
+      "computedHash": "68975f5e171de9f0401227a8e43237ac88daba8dd39a3369842db3d3d469abca",
       "installMode": "copy"
     },
     "study-review": {

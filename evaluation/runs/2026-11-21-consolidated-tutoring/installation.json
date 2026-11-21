@@ -1,0 +1,146 @@
+{
+  "skills_cli": "1.9.0",
+  "single": {
+    "steps": [
+      {
+        "arguments_after_cli": [
+          "add",
+          "/Users/dest1n/Projects/study-skills",
+          "--agent",
+          "codex",
+          "--skill",
+          "study-hint",
+          "--yes"
+        ],
+        "exit": 0,
+        "names": [
+          "study-hint"
+        ]
+      }
+    ],
+    "sha256": {
+      "study-hint/SKILL.md": "d3596cce232009c25e2545d92248139fddfc0bd446a89ab8268c5cace43c04f2",
+      "study-hint/LICENSE": "26ba4e26a8dbfb73cd05f6aff6da3843fae8b5d17eac9d92bf5fe118e2f69a6c",
+      "study-hint/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94"
+    }
+  },
+  "full": {
+    "steps": [
+      {
+        "arguments_after_cli": [
+          "add",
+          "/Users/dest1n/Projects/study-skills",
+          "--agent",
+          "codex",
+          "--skill",
+          "study-hint",
+          "study-guide",
+          "study-review",
+          "study-trace",
+          "--yes"
+        ],
+        "exit": 0,
+        "names": [
+          "study-guide",
+          "study-hint",
+          "study-review",
+          "study-trace"
+        ]
+      }
+    ],
+    "sha256": {
+      "study-hint/SKILL.md": "d3596cce232009c25e2545d92248139fddfc0bd446a89ab8268c5cace43c04f2",
+      "study-hint/LICENSE": "26ba4e26a8dbfb73cd05f6aff6da3843fae8b5d17eac9d92bf5fe118e2f69a6c",
+      "study-hint/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
+      "study-guide/SKILL.md": "724bddbef00fe356343d918feff0224d07fb45396e4fbdb433996f87b2d8f60b",
+      "study-guide/LICENSE": "26ba4e26a8dbfb73cd05f6aff6da3843fae8b5d17eac9d92bf5fe118e2f69a6c",
+      "study-guide/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
+      "study-review/SKILL.md": "2c86bd091b408ac0a10c41e231ee08658af7aa2b5d2ffef8f7199618552ebecb",
+      "study-review/LICENSE": "26ba4e26a8dbfb73cd05f6aff6da3843fae8b5d17eac9d92bf5fe118e2f69a6c",
+      "study-review/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
+      "study-trace/SKILL.md": "b0efb04dcf622911bb673317610ca70428e2f028cad547ef9e82c7eff0744e39",
+      "study-trace/LICENSE": "26ba4e26a8dbfb73cd05f6aff6da3843fae8b5d17eac9d92bf5fe118e2f69a6c",
+      "study-trace/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94"
+    }
+  },
+  "upgrade": {
+    "steps": [
+      {
+        "arguments_after_cli": [
+          "add",
+          "/var/folders/8k/h7q4305x2_99njry5v0zh00h0000gn/T/study-consolidated-eval.fk8y1C6dVm/legacy-source",
+          "--agent",
+          "codex",
+          "--skill",
+          "study-hint-normal",
+          "study-hint-fast",
+          "study-guide-normal",
+          "study-guide-fast",
+          "study-review",
+          "study-trace",
+          "--copy",
+          "--yes"
+        ],
+        "exit": 0,
+        "names": [
+          "study-guide-fast",
+          "study-guide-normal",
+          "study-hint-fast",
+          "study-hint-normal",
+          "study-review",
+          "study-trace"
+        ]
+      },
+      {
+        "arguments_after_cli": [
+          "remove",
+          "study-hint-normal",
+          "study-hint-fast",
+          "study-guide-normal",
+          "study-guide-fast",
+          "--yes"
+        ],
+        "exit": 0,
+        "names": [
+          "study-review",
+          "study-trace"
+        ]
+      },
+      {
+        "arguments_after_cli": [
+          "add",
+          "/Users/dest1n/Projects/study-skills",
+          "--agent",
+          "codex",
+          "--skill",
+          "study-hint",
+          "study-guide",
+          "study-review",
+          "study-trace",
+          "--yes"
+        ],
+        "exit": 0,
+        "names": [
+          "study-guide",
+          "study-hint",
+          "study-review",
+          "study-trace"
+        ]
+      }
+    ],
+    "sha256": {
+      "study-hint/SKILL.md": "d3596cce232009c25e2545d92248139fddfc0bd446a89ab8268c5cace43c04f2",
+      "study-hint/LICENSE": "26ba4e26a8dbfb73cd05f6aff6da3843fae8b5d17eac9d92bf5fe118e2f69a6c",
+      "study-hint/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
+      "study-guide/SKILL.md": "724bddbef00fe356343d918feff0224d07fb45396e4fbdb433996f87b2d8f60b",
+      "study-guide/LICENSE": "26ba4e26a8dbfb73cd05f6aff6da3843fae8b5d17eac9d92bf5fe118e2f69a6c",
+      "study-guide/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
+      "study-review/SKILL.md": "2c86bd091b408ac0a10c41e231ee08658af7aa2b5d2ffef8f7199618552ebecb",
+      "study-review/LICENSE": "26ba4e26a8dbfb73cd05f6aff6da3843fae8b5d17eac9d92bf5fe118e2f69a6c",
+      "study-review/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
+      "study-trace/SKILL.md": "b0efb04dcf622911bb673317610ca70428e2f028cad547ef9e82c7eff0744e39",
+      "study-trace/LICENSE": "26ba4e26a8dbfb73cd05f6aff6da3843fae8b5d17eac9d92bf5fe118e2f69a6c",
+      "study-trace/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94"
+    }
+  }
+}

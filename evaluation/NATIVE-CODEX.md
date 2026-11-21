@@ -1,5 +1,17 @@
 # Native Codex invocation checklist
 
+## Consolidated hint and guide
+
+- [x] Non-interactive CLI loaded the installed `study-hint` and presented the text pace menu.
+- [x] The same session resumed the pending request, carried the selected pace into a follow-up, and accepted an explicit pace change.
+- [x] The same session loaded `study-guide` after explicit selection and preserved the fixture under the existing read-only permissions.
+- [ ] Interactive discovery and the button menu.
+- [ ] Ending study mode and a native switch that also changes the client's permission policy.
+
+[Run evidence](runs/2026-11-21-consolidated-tutoring/README.md) identifies the native injection events, exact prompts, and observed changes.
+
+## Historical pace-specific skills
+
 Status: partial; see [native results](runs/2026-11-17/native-codex/README.md). Supplied-file evaluations do not satisfy this checklist.
 
 Use an isolated project where only the four product modes have been installed. Record Codex/Skills CLI versions, the installed file set and policy-file contents.

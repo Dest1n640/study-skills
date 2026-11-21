@@ -4,7 +4,10 @@ context: 'Study skills is a Markdown Agent Skills project for learning programmi
   Public source repository: https://github.com/Dest1n640/study-skills. GitHub source availability is confirmed;
   remote installation and publication of all current local revisions are not verified.
 
-  Four explicitly selected modes: study-hint-normal, study-hint-fast, study-guide-normal, study-guide-fast.
+  Four explicitly selected skills: study-hint, study-guide, study-review, study-trace.
+
+  Hint and guide accept an explicit pace at activation or offer Quick and Detailed, using text if a
+  choice control is unavailable. The choice persists while that skill is active in the conversation.
 
   Hint leaves assignment implementation to the learner; detailed pseudocode is limited to the current step.
 
@@ -14,7 +17,9 @@ context: 'Study skills is a Markdown Agent Skills project for learning programmi
 
   Guide has no compulsory checkpoints; understanding checks are requested by the learner.
 
-  Compare applicable methods, explain concepts and transfer, inspect real code, run available checks.
+  Scope hint and guide to the relevant code and requirements. Explain why important tools, algorithms,
+  data structures, or patterns apply. Compare viable alternatives and use a small example, flowchart,
+  or pseudocode for difficult steps within the chosen authorship boundary. Run available checks.
 
   Skills are English; public descriptions are Russian/English; tutors speak the learner language.
 

@@ -1,12 +1,13 @@
 # Контекст Study skills
 
-Здесь сохранены требования, решения и исследования из обсуждения проекта 17 ноября 2026 года. Это структурированный перенос содержания, а не дословный транскрипт.
+Здесь собраны требования, решения и исследования проекта Study skills.
 
 ## Навигация
 
 - [Решения, история, открытые вопросы](DECISIONS.md).
 - [Учебная помощь](specs/learning-assistance/spec.md): объяснение тем, подходы, примеры, работа с проектом.
-- [Четыре режима](specs/study-modes/spec.md): границы hint/guide, темп, ручной выбор.
+- [Учебные режимы](specs/study-modes/spec.md) описывают границы hint и guide, темп и ручной выбор. Переход на `study-hint` и `study-guide` описан в change `consolidate-study-skills`.
+- [Ревью кода](specs/educational-code-review/spec.md) и [Трассировка](specs/code-tracing/spec.md) описывают `study-review` и `study-trace`.
 - [Упаковка и проверки](specs/distribution-validation/spec.md): языки, совместимость, установка, достоверность заявлений.
 - [Исследования](research/README.md): два отчёта и шесть исходных заметок.
 - [Результаты](../evaluation/RESULTS.md) и [сценарии проверок](../evaluation/SCENARIOS.md).

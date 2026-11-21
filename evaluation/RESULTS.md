@@ -1,5 +1,9 @@
 # Evaluation results
 
+## Consolidated hint and guide
+
+Codex CLI checks compared both paces within each new skill and exercised the text menu, inline pace, context-specific explanations, and switching in a read-only session. An initial hint flowchart was too complete for the requested help. The revised skill kept the repeat within the current obstacle. Separate local installs verified the one-skill route, the full set, and removal of the four legacy copies in a migrated project. The consolidated revision was local. Interactive menus, Claude Code, and remote installation remain unverified. [Run evidence](runs/2026-11-21-consolidated-tutoring/README.md)
+
 Date: 2026-11-17. These are small Codex-agent smoke tests, not a study of learning effectiveness.
 
 ## Method
